@@ -18,7 +18,7 @@ Coding for (at least) an hour every day for 100 days!
 
 A don't-break-the-chain style app to keep track of my progress with the #100DaysOfCode.
 
-**First steps:**
+***DONE*** -- **First steps:**
   - Set up Firebase
     - Hard-coded rows for 100 days, key in format "2018-05-22"
     - Save data as an object under the key for each day
@@ -30,9 +30,12 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
     - Three form fields: link to project, link to tweet, notes
   - Save data into Firebase
   
-**Second steps:**  
+**Second steps:**
+  - Generate today's date string ("2018-05-22") dynamically! 
   - Display today's date at the top of the page
-  - Display calendar/grid of progress (with checkmarks or Xs)
+  - Pull data for the current day and display it in the form fields (so they're easily editable)
+  - Refactor the code!!! (bit by bit... not urgent)
+  - Progress page: calendar/grid of progress (with checkmarks or Xs)
 
 **Other feature ideas:**
   - Title of project
