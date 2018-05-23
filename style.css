@@ -1,0 +1,43 @@
+body {
+  text-align: center;
+  font-family: Helvetica, Verdana, sans-serif;
+  max-width: 45em;
+  padding: 1em;
+  margin: 0 auto 3em;
+}
+
+body, input, button {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin-bottom: 2em;
+}
+
+main {
+  border: 1px solid black;
+  margin: 2.5em 0;
+  padding: 2em;
+}
+
+main p {  
+  margin-bottom: 2em;
+}
+
+#outcome {
+  margin:2em 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+hr {
+ margin: 2em 0;
+}
