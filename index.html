@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>100 Days of Code Tracker</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  
+  <body>
+    
+    <main>
+    
+      <h1>100 Days of Code Tracker</h1>
+
+      <p id="userinfo">
+        Not currently logged in.
+      </p>
+
+      <button id="login">Log in with GitHub</button> 
+      
+      <button id="logout">Log out</button>
+      
+      <form id="codeprogress">
+      
+        <hr/>
+        
+        <h2>
+          Did you code today?
+        </h2>
+        
+        <input type="submit" value="Yes! Save my progress!">
+
+        <button id="noprogress">Nope! But I will tomorrow!</button>
+      <br/><br/>
+        
+        Project link: <input type="text" id="project-link">
+        <br/><br/>
+        Link to tweet: <input type="text" id="tweet-link">
+        <br/><br/>
+        Notes: <input type="text" id="notes">
+        
+      </form>
+          
+    </main>
+
+
+  </body>
+  
+</html>
