@@ -63,6 +63,7 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
 **Next:**
   - Make the progress grid dynamic: display a green box for each completed day, a red box for any past days that were missed, and a grey box for all future days.
   - Switch back to using VS Code rather than doing all development in Glitch, and use Git locally and sync directly to GitHub!
+  - Show confirmation that data was successfully saved!
 
 
 **Other feature ideas:**
