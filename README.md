@@ -50,9 +50,19 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
     - Yes: Display form to enter progress
     - No: Save "null" to current date location in database, and display an inspirational message
   - Otherwise if data already exists for current day, display progress form
+  - Created a simple CSS grid of elements generated with JavaScript, one for each of the 100 days. All hard-coded for now!
+
+**#TIL:**
+  - The `fr` unit in CSS is super cool -- it stands for a part (or *fraction*) of the available space!
+  - Finally using CSS Grids again
+
+**Resources on CSS Grids:**
+  - https://gridbyexample.com/examples/
+  - https://css-tricks.com/snippets/css/complete-guide-grid/
 
 **Next:**
-  - Progress page: calendar/grid of progress (with checkmarks or Xs)
+  - Make the progress grid dynamic: display a green box for each completed day, a red box for any past days that were missed, and a grey box for all future days.
+
 
 **Other feature ideas:**
   - Title of project
