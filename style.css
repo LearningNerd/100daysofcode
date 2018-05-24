@@ -41,3 +41,30 @@ main p {
 hr {
  margin: 2em 0;
 }
+
+#codeprogress, #didyoucode {
+  display: none;
+}
+
+/* GRID! */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+}
+
+.box {
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.success {
+   background-color: #9ACD32; 
+}
+
+.missed {
+   background-color: #E9967A; 
+}
+
