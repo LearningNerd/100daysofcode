@@ -64,7 +64,7 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - Make the progress grid dynamic: display a green box for each completed day, a red box for any past days that were missed, and a grey box for all future days.
   - Switch back to using VS Code rather than doing all development in Glitch, and use Git locally and sync directly to GitHub!
   - Show confirmation that data was successfully saved!
-
+  - Set date cut-off time to something more like 2am (since I keep saving my work for the day after midnight!)
 
 **Other feature ideas:**
   - Title of project
@@ -74,3 +74,4 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - Video recording of that day's work.
   - Time spent studying that day?
   - Other statistics (lines of code written? etc etc) ... probably not
+  - User setting for cut-off time, applying work to previous day even if after midnight
