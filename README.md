@@ -27,7 +27,7 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
 **Finished:**
   - Public URL hosted on GitHub: https://learningnerd.com/100daysofcode/
   - Set up Firebase
-    - Database schema: users/<uid>/<date like 2018-05-22>/<data for each field>
+    - Database schema: users/*uid*/*date like 2018-05-22*/*data for each field*
     - Save data as an object under the key for each day, under each user
     - For days with no progress, key has value of null
   - User login with GitHub (via Firebase)
@@ -36,6 +36,8 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
     - Two buttons: yes or no (but "no" doesn't do anything yet!)
     - Three form fields: link to project, link to tweet, notes
   - Save data into Firebase on form submission
+
+<hr/>
 
 ### 2018-05-23
 
@@ -60,11 +62,27 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - https://gridbyexample.com/examples/
   - https://css-tricks.com/snippets/css/complete-guide-grid/
 
+<hr/>
+
+### 2018-05-24
+
+**Finished:**
+  - Make the progress grid dynamic: display a green box for each completed day, or a grey box for all future days  
+  - Add a modal that appears when clicking each day, displaying information for that day (date, project link, and tweet link)
+
+**#TIL:**
+  - Messed around with the Performance tab in Chrome DevTools -- so much more to learn here!
+  - Render-Blocking CSS: https://developers.google.com/web/tools/lighthouse/audits/blocking-resources 
+
 **Next:**
-  - Make the progress grid dynamic: display a green box for each completed day, a red box for any past days that were missed, and a grey box for all future days.
-  - Switch back to using VS Code rather than doing all development in Glitch, and use Git locally and sync directly to GitHub!
+  - Bug: if user clicks *between* each box in the grid, modal appears -- it shouldn't!
   - Show confirmation that data was successfully saved!
+  - If user doesn't have any data saved yet, display an inspirational message to get started with their 100 days challenge! 
+  - Save a record in the database for any previous days that were missed
+  - For missed days, show a red box in the grid showing user's progress
+  - Switch back to using VS Code rather than doing all development in Glitch, and use Git locally and sync directly to GitHub!
   - Set date cut-off time to something more like 2am (since I keep saving my work for the day after midnight!)
+  - Either delete notes field or fix CSS so it fits in the modal
 
 **Other feature ideas:**
   - Title of project
@@ -75,3 +93,4 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - Time spent studying that day?
   - Other statistics (lines of code written? etc etc) ... probably not
   - User setting for cut-off time, applying work to previous day even if after midnight
+  - If user skips a day (or more) without checking in, prompt to save updates for those days as well
