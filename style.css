@@ -20,7 +20,7 @@ h1 {
 
 main {
   border: 1px solid black;
-  margin: 2.5em 0;
+  margin: 0;
   padding: 2em;
 }
 
@@ -42,7 +42,7 @@ hr {
  margin: 2em 0;
 }
 
-#codeprogress, #didyoucode {
+#codeprogress, #didyoucode, .dayDetails {
   display: none;
 }
 
@@ -60,6 +60,10 @@ hr {
   font-size: 150%;
 }
 
+.box:hover {
+  background-color: lightskyblue;
+}
+
 .success {
    background-color: #9ACD32; 
 }
@@ -68,3 +72,32 @@ hr {
    background-color: #E9967A; 
 }
 
+.modalBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.7);
+    z-index: 2; 
+}
+
+.modal {
+  width: 20em;
+  height: 10em;
+  background: #eee;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 5px 5px 15px #aaa;
+  z-index: 10;
+}
+
+.dayDetails {
+  font-size: 100%;  
+}
