@@ -68,8 +68,10 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
 
 **Finished:**
   - Make the progress grid dynamic: display a green box for each completed day, or a grey box for all future days  
+  - Grid is only visible if user is logged in
   - Add a modal that appears when clicking each day, displaying information for that day (date, project link, and tweet link)
-
+  - Modal disappers when clicking outside of it
+  
 **#TIL:**
   - Messed around with the Performance tab in Chrome DevTools -- so much more to learn here!
   - Render-Blocking CSS: https://developers.google.com/web/tools/lighthouse/audits/blocking-resources 
