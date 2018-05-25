@@ -33,6 +33,7 @@ let projectLinkInputElem = document.getElementById("project-link");
 let tweetLinkInputElem = document.getElementById("tweet-link");
 let notesInputElem = document.getElementById("notes");
 
+let progressContainerElem = document.getElementById("progress");
 let gridElem = document.getElementById("grid");
 let modalBackground = document.getElementById("modalBackground");
 
@@ -125,6 +126,7 @@ function handleAuthStateChange (user) {
     // Hide views
     didYouCodeElem.style.display = "none";
     formElem.style.display = "none";
+    progressContainerElem.style.display = "none";
     
     clearFormFields();
   }
@@ -302,6 +304,9 @@ function clearFormFields() {
 function createGridBoxes(userDataArray) {
   // Note: hard-coded in HTML: 100 divs!!!
   console.log("called createGridBoxes");
+  
+  // Make container visible
+  progressContainerElem.style.display = "block";
   
   for (let i = 0; i < 100; i++) {
     let box = document.getElementById( "day" + (i + 1) );
