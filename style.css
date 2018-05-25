@@ -42,7 +42,7 @@ hr {
  margin: 2em 0;
 }
 
-#codeprogress, #didyoucode, .dayDetails {
+#codeprogress, #didyoucode, #progress, .dayDetails {
   display: none;
 }
 
