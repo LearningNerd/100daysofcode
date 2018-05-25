@@ -33,9 +33,32 @@ let projectLinkInputElem = document.getElementById("project-link");
 let tweetLinkInputElem = document.getElementById("tweet-link");
 let notesInputElem = document.getElementById("notes");
 
-// Create grid!
-// *** TODO: ...make this better, lol!
-createGridBoxes();
+let gridElem = document.getElementById("grid");
+let modalBackground = document.getElementById("modalBackground");
+
+//////////////////////////////////////////////////////////////////////////
+// Click boxes to open modal with more info
+/////////////////////////////////////////////////////////////////////////
+gridElem.addEventListener("click", displayModal);
+
+function displayModal(event) {
+  console.log("click!");
+ if (event.target !== event.this && event.target.children[0]) {
+   event.target.children[0].classList.add("modal");
+   event.target.children[0].style.display = "block";
+   modalBackground.classList.add("modalBackground");
+   
+   document.addEventListener("click", hideModal);
+   
+   function hideModal() {
+      event.target.children[0].classList.remove("modal");
+      event.target.children[0].style.display = "none";
+      modalBackground.classList.remove("modalBackground");
+      document.removeEventListener("click", hideModal);
+   }
+   event.stopPropagation();
+ }
+}
 
 //////////////////////////////////////////////////////////////////////////
 // USER LOGIN
@@ -68,9 +91,7 @@ function onLogInOutButtonClick() {
     
   }
 
-  
 } // end onLogInOutButtonClick
-
 
 // Set up Firebase onAuthStateChanged event listener,
 // which will call our handleAuthStateChange function
@@ -88,8 +109,10 @@ function handleAuthStateChange (user) {
     currentUserId = user.uid;
     userInfoElem.textContent = "Welcome, " + user.displayName + "!";    
     logInOutButton.textContent = "Log out";
-        
-    getCurrentDayData(); // ...and display views accordingly
+    
+     // Display views based on user data
+    getCurrentDayData();
+    getUserProgressData();
     
   // Otherwise, if user just logged out:
   } else {
@@ -106,7 +129,6 @@ function handleAuthStateChange (user) {
     clearFormFields();
   }
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 // DID YOU CODE?
@@ -133,7 +155,6 @@ function handleNoButtonClick() {
   let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
 
   currentDateRef.set(null);
-  
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -146,9 +167,6 @@ function getCurrentDayData() {
   
   // Create database ref object pointing to location for today's date for current user
   let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
-  
-  console.log(currentDateRef);
-
   
   // Get current user's data for current date
   currentDateRef.once("value", handleCurrentData);
@@ -174,16 +192,55 @@ function getCurrentDayData() {
     }
   }
   
-  
-}
+} // end getCurrentDayData()
 
+
+function getUserProgressData() {
+  
+  console.log("Called getUserProgressData");
+  
+  // Create database ref object pointing to location for current user
+  let currentUserRef = firebase.database().ref("users/" + currentUserId);
+
+  // Get current user's data for current date
+  currentUserRef.orderByKey().on("value", handleCurrentData); 
+        // TODO: error handling!!!!!!!!
+  
+  // Using Firebase forEach to push values into an array, to be sure the order is preserved
+  let userDataArray = [];
+    
+  function handleCurrentData (dataSnapshot) {
+    console.log("Called handleCurrentData");
+
+    // For each day, push the data into an array
+    dataSnapshot.forEach(function(daySnapshot) {
+      let eachDayObject = daySnapshot.val();
+      eachDayObject.date = daySnapshot.key;
+      userDataArray.push(eachDayObject);
+    });
+    
+    console.log(userDataArray);
+    
+    // If user already has progress:
+    if (userDataArray) {
+    
+      // Display progress grid based on user's data
+      createGridBoxes(userDataArray);
+    
+    } else {
+      // TODO: display an inspirational message to get started with their 100 days challenge! 
+    }
+    
+  }
+  
+} // end getUserProgressData()
 
 
 //////////////////////////////////////////////////////////////////////////
 // SAVING USER DATA
 /////////////////////////////////////////////////////////////////////////
-// Set up event listener for when user submits the form
 
+// Set up event listener for when user submits the form
 formElem.addEventListener("submit", handleFormSubmit);
 
 function handleFormSubmit (event) {
@@ -200,17 +257,14 @@ function handleFormSubmit (event) {
   console.log("User data object:");
   console.log(todaysProgressData);
   
-  // TODO: display data for current day in the form fields
-  
-  // Save user data into Firebase for the current day
 
+  // Save user data into Firebase for the current day
   if (currentUserId) {
     // Create database ref object pointing to location for today's date
     let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
 
     // Save data into Firebase (update if it exists, or create if it doesn't)
     currentDateRef.set(todaysProgressData);
-    
   }
   
 }
@@ -219,9 +273,9 @@ function handleFormSubmit (event) {
 // HELPER FUNCTIONS
 //////////////////////////////////////////////////////////////////////////
 
-// source: https://stackoverflow.com/a/4929629
 
 function getCurrentDateString() {
+  // source: https://stackoverflow.com/a/4929629
   let today = new Date();
   let dd = today.getDate();
   let mm = today.getMonth() + 1 ; //January is 0!
@@ -240,26 +294,45 @@ function getCurrentDateString() {
 
 
 function clearFormFields() {
-     projectLinkInputElem.value = "";
+    projectLinkInputElem.value = "";
     tweetLinkInputElem.value = "";
     notesInputElem.value = "";
 }
 
-function createGridBoxes() {
-  // hard-coded for now: create 100 divs, append to #grid!
+function createGridBoxes(userDataArray) {
+  // Note: hard-coded in HTML: 100 divs!!!
   console.log("called createGridBoxes");
   
-  for (let i=1; i<= 100; i++) {
-    let box = document.createElement("div");
-    box.textContent = "Day " + i;    
-    box.className = "box";
-    document.getElementById("grid").appendChild(box);
+  for (let i = 0; i < 100; i++) {
+    let box = document.getElementById( "day" + (i + 1) );
+
+    // TODO: if date exists and has value of null, mark it as a missed day
     
-    // TODO -- make this dynamic! lol!
-    if (i === 1 || i === 2) {
-        box.className = "box success";
+    if (userDataArray[i]) {
+      console.log(userDataArray[i]);
+      
+      let detailsContent = "<strong>" + userDataArray[i].date + "</strong><br/><br/>";      
+      console.log(detailsContent);
+      
+      detailsContent += '<a href="' + userDataArray[i].projectLink + '">Link to today\'s project' + '</a><br/><br/>';
+      console.log(detailsContent);
+      
+      detailsContent += '<a href="' + userDataArray[i].tweetLink + '">Link to today\'s tweet' + '</a><br/><br/>';
+      
+      // TODO: remove this field, or change CSS so it can fit within the modal box
+      // detailsContent += "<strong>Notes:</strong><br/> " + userDataArray[i].notes;
+      
+      console.log(detailsContent);
+      
+      box.className = "box success";
+      let dayInfoElem = document.createElement("p");
+      dayInfoElem.innerHTML = detailsContent;
+      dayInfoElem.className = "dayDetails";
+      box.append(dayInfoElem);
+
+    } else {
+       console.log("not in userdatakeys"); 
     }
         
   }
 }
-
