@@ -16,6 +16,11 @@ Coding for (at least) an hour every day for 100 days!
   - https://jenniferdewalt.com/
   - ...plus my own 100 video blogs in 100 days, and 30 days of web dev, and similar experiments
 
+## Project ideas
+  - Static site generator (from scratch / almost?)
+  - Volunteer signup app with automated emails and texts
+  - Some web games (tons of ideas here!)
+
 <hr/>
 
 ## Project 1: 100 Days of Code Tracker
@@ -76,9 +81,19 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - Messed around with the Performance tab in Chrome DevTools -- so much more to learn here!
   - Render-Blocking CSS: https://developers.google.com/web/tools/lighthouse/audits/blocking-resources 
 
+<hr/>
+
+### 2018-05-25
+
+**Finished:**
+  - Show confirmation that data was successfully saved!
+
+**Explored:**
+  - Took a look at the Glitch starter template for a Node.js app with SQLite database. (Had some glitches though, didn't seem to work!)
+
 **Next:**
   - Bug: if user clicks *between* each box in the grid, modal appears -- it shouldn't!
-  - Show confirmation that data was successfully saved!
+  - Bug: when saving progress for the day, the current day in the grid doesn't get updated.
   - If user doesn't have any data saved yet, display an inspirational message to get started with their 100 days challenge! 
   - Save a record in the database for any previous days that were missed
   - For missed days, show a red box in the grid showing user's progress
