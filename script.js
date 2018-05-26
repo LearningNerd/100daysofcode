@@ -32,6 +32,7 @@ let formElem = document.getElementById("codeprogress");
 let projectLinkInputElem = document.getElementById("project-link");
 let tweetLinkInputElem = document.getElementById("tweet-link");
 let notesInputElem = document.getElementById("notes");
+let saveResponseElem = document.getElementById("saveResponse");
 
 let progressContainerElem = document.getElementById("progress");
 let gridElem = document.getElementById("grid");
@@ -153,10 +154,11 @@ function handleNoButtonClick() {
   didYouCodeElem.textContent = "[Insert inspirational message here!] Come back tomorrow!";
     // TODO -- MAYBE? -- add button for "oops, changed my mind! I have progress to share";
   
-  // Create location for current date in database with value of null
+  // Create location for current date in database with value of false
   let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
 
-  currentDateRef.set(null);
+  currentDateRef.set(false);
+  console.log("Set value for current date to false");
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -205,7 +207,7 @@ function getUserProgressData() {
   let currentUserRef = firebase.database().ref("users/" + currentUserId);
 
   // Get current user's data for current date
-  currentUserRef.orderByKey().on("value", handleCurrentData); 
+  currentUserRef.orderByKey().once("value", handleCurrentData); 
         // TODO: error handling!!!!!!!!
   
   // Using Firebase forEach to push values into an array, to be sure the order is preserved
@@ -266,7 +268,11 @@ function handleFormSubmit (event) {
     let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
 
     // Save data into Firebase (update if it exists, or create if it doesn't)
-    currentDateRef.set(todaysProgressData);
+    currentDateRef.set(todaysProgressData, onSaveSuccess);
+    
+    function onSaveSuccess() {
+      saveResponseElem.textContent = "Data saved successfully. Keep up the good work! Seeya tomorrow!";
+    }
   }
   
 }
@@ -341,3 +347,4 @@ function createGridBoxes(userDataArray) {
         
   }
 }
+
