@@ -118,6 +118,7 @@ Another day off, since I was so tired after returning home from the weekend trip
 **Finished:**
   - Remove Firebase forEach section now that the data is given as an array (thanks to restructuring things the other day)
   - For missed days, show a red box in the grid showing user's progress
+  - Cleanup: read from database only once (instead of twice!)
 
 **Next:**
   - When displaying user progress, insert `false` value into the database for any previous days that were missed
