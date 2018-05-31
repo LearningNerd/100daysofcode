@@ -120,6 +120,15 @@ Another day off, since I was so tired after returning home from the weekend trip
   - For missed days, show a red box in the grid showing user's progress
   - Cleanup: read from database only once (instead of twice!)
 
+<hr/>
+
+### Day 9: 2018-05-30
+
+**Finished:**
+  - Updated database structure again, adding a `goalMet` field to all entries and including the date for missed days
+  - Replaced dates with timestamps in the database
+  - Started writing some helper functions to work with dates
+
 **Next:**
   - When displaying user progress, insert `false` value into the database for any previous days that were missed
     - Calculate the next indexes and dates by comparing current date to the latest database entry    
