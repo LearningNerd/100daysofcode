@@ -125,21 +125,20 @@ Another day off, since I was so tired after returning home from the weekend trip
 ### Day 9: 2018-05-30
 
 **Finished:**
-  - Updated database structure again, adding a `goalMet` field to all entries and including the date for missed days
-  - Replaced dates with timestamps in the database
-  - Started writing some helper functions to work with dates
+  - Update database structure again, adding a `goalMet` field to all entries and including the date for missed days
+  - Replace dates with timestamps in the database
+  - Start adding some helper functions to work with dates
 
 <hr/>
 
 ### Day 10: 2018-05-31
 
 **Finished:**
-  - Reviewed date arithmetic, yay! Remembered that math trick to find midnight of the current day.
-  - Wrote a couple helper functions to check if a given timestamp falls on today, yesterday, or any time before yesterday.
+  - Review date arithmetic! (Remembered that math trick to find midnight of the current day.)
+  - Finish a couple helper functions to check if a given timestamp falls on today, yesterday, or any time before yesterday.
+  - Confirm that the Firebase server saves the current timestamp (in UTC) when inserting this placeholder:  `firebase.database.ServerValue.TIMESTAMP`  
 
-**Next:**
-  - Find out the timezone used by Firebase servers (is it UTC?)
-  - Make a small test (separate from other code!) to try inserting current timestamp according to Firebase servers
+**Next:**    
   - Decide on database structure changes:
     - Remove date strings and only use timestamps?
     - Save missed days as objects containing `false` value for `timestamp` property? (Remove `goalMet` property?)
