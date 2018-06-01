@@ -131,7 +131,7 @@ Another day off, since I was so tired after returning home from the weekend trip
 
 <hr/>
 
-### Day 9: 2018-05-31
+### Day 10: 2018-05-31
 
 **Finished:**
   - Reviewed date arithmetic, yay! Remembered that math trick to find midnight of the current day.
