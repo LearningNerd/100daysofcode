@@ -129,7 +129,21 @@ Another day off, since I was so tired after returning home from the weekend trip
   - Replaced dates with timestamps in the database
   - Started writing some helper functions to work with dates
 
+<hr/>
+
+### Day 9: 2018-05-31
+
+**Finished:**
+  - Reviewed date arithmetic, yay! Remembered that math trick to find midnight of the current day.
+  - Wrote a couple helper functions to check if a given timestamp falls on today, yesterday, or any time before yesterday.
+
 **Next:**
+  - Find out the timezone used by Firebase servers (is it UTC?)
+  - Make a small test (separate from other code!) to try inserting current timestamp according to Firebase servers
+  - Decide on database structure changes:
+    - Remove date strings and only use timestamps?
+    - Save missed days as objects containing `false` value for `timestamp` property? (Remove `goalMet` property?)
+    
   - When displaying user progress, insert `false` value into the database for any previous days that were missed
     - Calculate the next indexes and dates by comparing current date to the latest database entry    
           
