@@ -138,11 +138,24 @@ Another day off, since I was so tired after returning home from the weekend trip
   - Finish a couple helper functions to check if a given timestamp falls on today, yesterday, or any time before yesterday.
   - Confirm that the Firebase server saves the current timestamp (in UTC) when inserting this placeholder:  `firebase.database.ServerValue.TIMESTAMP`  
 
+<hr/>
+
+### Day 11: 2018-06-01
+
+**Finished:**
+  - Update database structure:
+    - Add timestamps and remove date strings
+    - Remove `goalMet` property
+    - Instead of objects, just use a timestamp as the value for missed days (to more easily check the date of the most recent entry)
+  - Refactor `createGridBoxes()`:
+    - Use `.forEach()` instead of a `for` loop
+    - Simplify logic to identify "success" vs "missed" days
+    - Only iterate through database entries (Silly me, iterating through all 100 days for no reason!)
+  - Start making function to add entries for any previous days that were missed
+
+<hr/>
+
 **Next:**    
-  - Decide on database structure changes:
-    - Remove date strings and only use timestamps?
-    - Save missed days as objects containing `false` value for `timestamp` property? (Remove `goalMet` property?)
-    
   - When displaying user progress, insert `false` value into the database for any previous days that were missed
     - Calculate the next indexes and dates by comparing current date to the latest database entry    
           
