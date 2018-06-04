@@ -153,16 +153,43 @@ Another day off, since I was so tired after returning home from the weekend trip
     - Only iterate through database entries (Silly me, iterating through all 100 days for no reason!)
   - Start making function to add entries for any previous days that were missed
 
+
 <hr/>
 
-**Next:**    
-  - When displaying user progress, insert `false` value into the database for any previous days that were missed
-    - Calculate the next indexes and dates by comparing current date to the latest database entry    
-          
-  - When saving progress for the day, save user data under the day's index
-    - Calculate the index of the current day (based on index of the latest database entry?)
-  - When saving progress for the day, update the current day in the grid view
-  
+### Day 12: 2018-06-02
+
+No coding today! The only reason was poor time management; I thought I would spend my evening at my computer, but I got caught up in taking care of some chores and then ended up staying out late to go to a friend's birthday party and meet some other friends for a late dinner. It was good to be social, at least. :)
+
+<hr/>
+
+### Day 13: 2018-06-03
+
+No coding today either, and I feel bad about missing two days in a row! Argh! Oh well, it's all good. (Gotta remember that!) I have no good excuse for today, just felt really lazy and slept a lot and visited family and watched TV. That was about it. Good to have a do-nothing day once in a while.
+
+<hr/>
+
+### Day 14: 2018-06-04
+
+**Finished:**
+  - When displaying user progress, insert entries into the database for any previous days that were missed, and display the progress grid according to the latest updates
+    - Small bug fix: changed loop condition so entry for current day no longer gets added
+  - Update database structure:
+    - Start day index at 1 instead of 0 (just more intuitive that way, and no real downside)
+  - Update code to match previous changes to database structure:
+    - When user clicks "no" button to record a missed day, save server's current timestamp as value for the day index (save as a nubmer value, not an object)
+    - Bug fix: If current day is saved as a missed day, progress form should not display "undefined" in the input boxes
+    - Update `handleFormSubmit`  to save progress for current day with `timestamp` property
+    - Create `todayEntryIndex` global, with its value set in `getUserProgressData`, to insert new entries into the correct location (index for the current day)
+
+
+<hr/>
+
+**Next:**
+  - When saving progress for the day, update the current day in the grid view. (Maybe use Firebase childadded event?)
+  - Use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)
+  - Possible bug: using Unix timestamps for missed days (midnight at UTC time) but using local time for other entries will probably be confusing and cause some unexpected behavior.
+  - Layout bug: grid overflows if window size is smaller (no responsive design!)
+
   - Bug: if user clicks *between* each box in the grid, modal appears -- it shouldn't!
   - If user doesn't have any data saved yet, display an inspirational message to get started with their 100 days challenge! 
   - Save a record in the database for any previous days that were missed  
