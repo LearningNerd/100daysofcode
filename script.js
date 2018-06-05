@@ -18,7 +18,9 @@ let githubAuth = new firebase.auth.GithubAuthProvider();
 
 // Globar vars
 let currentUserId;
-let currentDate = getCurrentDateString();
+let currentDateString = getDateString();
+let lastEntryIndex;
+let todayEntryIndex;
 
 // Create a JavaScript object for each HTML element that we need to use
 let userInfoElem = document.getElementById("userinfo");
@@ -45,13 +47,13 @@ gridElem.addEventListener("click", displayModal);
 
 function displayModal(event) {
   console.log("click!");
- if (event.target !== event.this && event.target.children[0]) {
+  if (event.target !== event.this && event.target.children[0]) {
    event.target.children[0].classList.add("modal");
    event.target.children[0].style.display = "block";
    modalBackground.classList.add("modalBackground");
-   
+
    document.addEventListener("click", hideModal);
-   
+
    function hideModal() {
       event.target.children[0].classList.remove("modal");
       event.target.children[0].style.display = "none";
@@ -59,7 +61,7 @@ function displayModal(event) {
       document.removeEventListener("click", hideModal);
    }
    event.stopPropagation();
- }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -69,7 +71,6 @@ function displayModal(event) {
 // Set up event listener for when user clicks login button
 logInOutButton.addEventListener("click", onLogInOutButtonClick);
 
-// Define our function named onLoginButtonClick
 function onLogInOutButtonClick() {
   console.log("User clicked login/logout button!");
   
@@ -112,8 +113,8 @@ function handleAuthStateChange (user) {
     userInfoElem.textContent = "Welcome, " + user.displayName + "!";    
     logInOutButton.textContent = "Log out";
     
-     // Display views based on user data
-    getCurrentDayData();
+        
+     // Get data and display views accordingly
     getUserProgressData();
     
   // Otherwise, if user just logged out:
@@ -154,50 +155,27 @@ function handleNoButtonClick() {
   didYouCodeElem.textContent = "[Insert inspirational message here!] Come back tomorrow!";
     // TODO -- MAYBE? -- add button for "oops, changed my mind! I have progress to share";
   
-  // Create location for current date in database with value of false
-  let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
+  // Create location for current day index in database...
+  let currentDayRef = firebase.database().ref("users/" + currentUserId + "/" + todayEntryIndex);
 
-  currentDateRef.set(false);
-  console.log("Set value for current date to false");
+  // Set current timestamp as the value for the current day index to represent a missed day
+  currentDayRef.set(firebase.database.ServerValue.TIMESTAMP);
+  console.log("User entered a MISSED day. Set current timestamp as value for day #" + todayEntryIndex);
 }
 
 //////////////////////////////////////////////////////////////////////////
 // GET AND DISPLAY DATA
 /////////////////////////////////////////////////////////////////////////
 
-function getCurrentDayData() {
+function displayCurrentDayData(currentDayData) {
   
-  console.log("Called getCurrentDayData");
+  console.log("Called displayCurrentDayData");
   
-  // Create database ref object pointing to location for today's date for current user
-  let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
-  
-  // Get current user's data for current date
-  currentDateRef.once("value", handleCurrentData);
-        // TODO: error handling!!!!!!!!
-  
-  function handleCurrentData (dataSnapshot) {
-    console.log("Called handleCurrentData");
-    
-    let userData = dataSnapshot.val();
+  projectLinkInputElem.value = currentDayData.projectLink;
+  tweetLinkInputElem.value = currentDayData.tweetLink;
+  notesInputElem.value = currentDayData.notes;
 
-    // If user already has progress saved for current date, display progress form with the data
-    if (userData) {
-      projectLinkInputElem.value = userData.projectLink;
-      tweetLinkInputElem.value = userData.tweetLink;
-      notesInputElem.value = userData.notes;
-      
-      displayProgressForm();
-    // Otherwise if no progress has been saved yet for the current date, 
-    } else {
-      console.log("no data for today yet!");
-      // Display "Did you code?" section
-      didYouCodeElem.style.display = "block";
-    }
-  }
-  
-} // end getCurrentDayData()
-
+}
 
 function getUserProgressData() {
   
@@ -210,29 +188,65 @@ function getUserProgressData() {
   currentUserRef.orderByKey().once("value", handleCurrentData); 
         // TODO: error handling!!!!!!!!
   
-  // Using Firebase forEach to push values into an array, to be sure the order is preserved
-  let userDataArray = [];
-    
   function handleCurrentData (dataSnapshot) {
     console.log("Called handleCurrentData");
 
-    // For each day, push the data into an array
-    dataSnapshot.forEach(function(daySnapshot) {
-      let eachDayObject = daySnapshot.val();
-      eachDayObject.date = daySnapshot.key;
-      userDataArray.push(eachDayObject);
-    });
-    
+    // Firebase gives an array when the object's properties are numbers in (mostly) consecutive order
+    // NOTE: remember that userDataArray has an empty value for index 0
+    let userDataArray = dataSnapshot.val();
     console.log(userDataArray);
-    
+    console.log(userDataArray.length);
+
     // If user already has progress:
     if (userDataArray) {
     
-      // Display progress grid based on user's data
+      let lastEntryIndex = userDataArray.length - 1;
+      let lastEntryData = userDataArray[lastEntryIndex];
+      // For days with progress, get timestamp property; for missed days, the element is just the timestamp value itself (not an object)
+      let lastEntryTimestamp = lastEntryData.timestamp ? lastEntryData.timestamp : lastEntryData;
+      
+      console.log(lastEntryData);
+      
+      // If an entry exists for the current day (even if a missed day), display progress form with the data
+      if ( isToday(lastEntryTimestamp) ) {
+        
+        // Set todayEntryIndex global; used by handleNoClick and handleFormSubmit!
+        todayEntryIndex = lastEntryIndex;
+
+        // Only show data in form fields if entry has data
+        if (lastEntryData.timestamp) {
+          displayCurrentDayData(lastEntryData);
+        }
+        displayProgressForm();
+        
+      // Otherwise if no progress has been saved yet for the current date, 
+      } else {
+        console.log("no data for today yet!");
+        // Display "Did you code?" section
+        didYouCodeElem.style.display = "block";
+                
+       // If latest entry is for the day before yesterday (or earlier), add missing entries
+       if ( isBeforeYesterday(lastEntryTimestamp) ) {
+         // Set userDataArray to an updated array containing complete list of entries up to yesterday         
+         userDataArray = addMissingEntries(userDataArray);
+       }
+        
+       // Update todayEntryIndex global; used by handleNoClick and handleFormSubmit!
+       todayEntryIndex = userDataArray.length;
+           // remember: if last entry wasn't today, then it must be yesterday!
+           // and if it runs, addMissingEntries() will insert an entry for yesterday,
+           // so if yesterday was day #3, length of the array is 4 (the 0 slot is empty),
+           // so today would be day #4 (same as array length)
+
+      }// end else
+
+      console.log("todayEntryIndex: " + todayEntryIndex);
+      
+      // Display progress grid based on user's data (after adding missing entries, if needed)
       createGridBoxes(userDataArray);
     
     } else {
-      // TODO: display an inspirational message to get started with their 100 days challenge! 
+      // TODO: display an inspirational message to get started with their 100 days challenge!
     }
     
   }
@@ -255,24 +269,30 @@ function handleFormSubmit (event) {
   let todaysProgressData = {
     projectLink: projectLinkInputElem.value,
     tweetLink: tweetLinkInputElem.value,
-    notes: notesInputElem.value
+    notes: notesInputElem.value,
+    timestamp: firebase.database.ServerValue.TIMESTAMP
   };
    
   console.log("User data object:");
   console.log(todaysProgressData);
-  
 
+  console.log("todayEntryIndex: " + todayEntryIndex);
+  
   // Save user data into Firebase for the current day
   if (currentUserId) {
-    // Create database ref object pointing to location for today's date
-    let currentDateRef = firebase.database().ref("users/" + currentUserId + "/" + currentDate);
+
+    // Create database ref object pointing to location for today's day index
+    let currentDayRef = firebase.database().ref("users/" + currentUserId + "/" + todayEntryIndex);
 
     // Save data into Firebase (update if it exists, or create if it doesn't)
-    currentDateRef.set(todaysProgressData, onSaveSuccess);
+    currentDayRef.set(todaysProgressData, onSaveSuccess);
+    
+    // TODO: error handling!
     
     function onSaveSuccess() {
-      saveResponseElem.textContent = "Data saved successfully. Keep up the good work! Seeya tomorrow!";
+      formElem.textContent = "Data saved successfully. Keep up the good work! Seeya tomorrow!";      
     }
+    
   }
   
 }
@@ -280,26 +300,6 @@ function handleFormSubmit (event) {
 //////////////////////////////////////////////////////////////////////////
 // HELPER FUNCTIONS
 //////////////////////////////////////////////////////////////////////////
-
-
-function getCurrentDateString() {
-  // source: https://stackoverflow.com/a/4929629
-  let today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1 ; //January is 0!
-  let yyyy = today.getFullYear();
-
-  // Zero padding:
-  if(dd < 10) {
-      dd = '0' + dd
-  } 
-  if(mm < 10) {
-      mm = '0' + mm
-  } 
-
-  return yyyy + '-' + mm + '-' + dd;
-}
-
 
 function clearFormFields() {
     projectLinkInputElem.value = "";
@@ -314,37 +314,168 @@ function createGridBoxes(userDataArray) {
   // Make container visible
   progressContainerElem.style.display = "block";
   
-  for (let i = 0; i < 100; i++) {
-    let box = document.getElementById( "day" + (i + 1) );
-
-    // TODO: if date exists and has value of null, mark it as a missed day
+  console.log(userDataArray);
+  
+  userDataArray.forEach(function(dayProgress, index) {
     
-    if (userDataArray[i]) {
-      console.log(userDataArray[i]);
-      
-      let detailsContent = "<strong>" + userDataArray[i].date + "</strong><br/><br/>";      
-      console.log(detailsContent);
-      
-      detailsContent += '<a href="' + userDataArray[i].projectLink + '">Link to today\'s project' + '</a><br/><br/>';
-      console.log(detailsContent);
-      
-      detailsContent += '<a href="' + userDataArray[i].tweetLink + '">Link to today\'s tweet' + '</a><br/><br/>';
+    console.log(index);
+    
+    // Change box for days with progress to "success" class, and include details for that day's progress
+    if (dayProgress.timestamp) {
+
+      let detailsContent = "<strong>" + dayProgress.date + "</strong><br/><br/>";            
+      detailsContent += '<a href="' + dayProgress.projectLink + '">Link to today\'s project' + '</a><br/><br/>';      
+      detailsContent += '<a href="' + dayProgress.tweetLink + '">Link to today\'s tweet' + '</a><br/><br/>';
       
       // TODO: remove this field, or change CSS so it can fit within the modal box
-      // detailsContent += "<strong>Notes:</strong><br/> " + userDataArray[i].notes;
+      // detailsContent += "<strong>Notes:</strong><br/> " + userDataArray[i].notes;      
       
-      console.log(detailsContent);
-      
+      let box = document.getElementById( "day" + (index) );
       box.className = "box success";
       let dayInfoElem = document.createElement("p");
       dayInfoElem.innerHTML = detailsContent;
       dayInfoElem.className = "dayDetails";
       box.append(dayInfoElem);
 
+    // Change box to "missed" class for missed days (value is the timestamp itself, so dayProgress.timestamp is undefined ),
     } else {
-       console.log("not in userdatakeys"); 
+      let box = document.getElementById( "day" + (index) );
+      box.className = "box missed";
     }
-        
-  }
+  });
+  
 }
 
+function addMissingEntries(userDataArray) {
+  console.log("called addMissingEntries");
+
+  const DAY_MILLIS = 86400000;
+  const YESTERDAY_MIDNIGHT_TIMESTAMP = getMidnightTimestamp() - DAY_MILLIS;
+  
+  // Make a new array, copying values from the original
+  let updatedArray = userDataArray.slice();
+  let lastEntryIndex = updatedArray.length - 1;
+  let lastEntryData = updatedArray[lastEntryIndex];
+    // For days with progress, get timestamp property; for missed days, the element is just the timestamp value itself (not an object)
+  let lastEntryTimestamp = lastEntryData.timestamp ? lastEntryData.timestamp : lastEntryData;  
+  let lastEntryMidnightTimestamp = getMidnightTimestamp(lastEntryTimestamp);
+
+  
+  while (lastEntryMidnightTimestamp !== YESTERDAY_MIDNIGHT_TIMESTAMP) {
+        
+    // Increase index to push new entry into the slot following the last entry
+    lastEntryIndex += 1;
+    
+    // Count up one day at a time from the last entry (midnight timestamp plus 24 hours)
+    lastEntryMidnightTimestamp += DAY_MILLIS;
+    
+    // Insert missed day entry into Firebase: just its index as a property, and its timestamp at midnight as the value
+    firebase.database().ref("users/" + currentUserId + "/" + lastEntryIndex).set(lastEntryMidnightTimestamp);
+    
+    // Push new entries for missed days into local array
+    updatedArray.push(lastEntryMidnightTimestamp);
+    
+    
+    let dateObj = new Date();
+    dateObj.setTime(lastEntryMidnightTimestamp);
+    console.log("Added missing entry for day #" + lastEntryIndex + ": " + dateObj.toUTCString());
+    
+  } // end while
+  
+  return updatedArray;
+  
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////
+// DATE/TIME HELPER FUNCTIONS
+//////////////////////////////////////////////////////////////////////////
+
+function getDateString(timestamp) {
+  // source: https://stackoverflow.com/a/4929629
+  
+  let date;
+  
+  // If argument provided:
+  if (timestamp) {
+    
+    date = new Date();
+    date.setTime(timestamp);
+    
+  // Default: today
+  } else {
+    
+    date = new Date();    
+  }
+  
+  let dd = date.getDate();
+  let mm = date.getMonth() + 1 ; //January is 0!
+  let yyyy = date.getFullYear();
+
+  // Zero padding:
+  if(dd < 10) {
+      dd = '0' + dd
+  } 
+  if(mm < 10) {
+      mm = '0' + mm
+  } 
+
+  return yyyy + '-' + mm + '-' + dd;
+}
+
+
+// Get timestamp for today at midnight
+function getMidnightTimestamp(givenTimestamp) {
+
+  const DAY_MILLIS = 86400000;
+
+  // If no argument given, default to current time
+  if (!givenTimestamp) {
+   givenTimestamp =  Date.now();
+  }
+  
+  // Milliseconds remaining since midnight of current day
+  let midnightMillisOffset = givenTimestamp % DAY_MILLIS;
+
+  // Return timestamp (in UTC) of current day at exactly midnight UTC
+  return givenTimestamp - midnightMillisOffset;
+
+      // OR THE ABOVE AS A ONE-LINER:
+      // return givenTimestamp - (givenTimestamp % 86400000)
+
+      //   ALTERNATE VERSION USING BUILT-IN DATE FUNCTIONS:
+      //     let currentDate = new Date();
+
+      //     // return timestamp (in UTC) of current day at exactly midnight UTC
+      //     return currentDate.setUTCHours(0,0,0,0).getTime();
+
+}
+
+// Check if a given timestamp falls within current day
+function isToday(givenTimestamp) {
+
+  const DAY_MILLIS = 86400000;
+  const TODAY_MIDNIGHT_TIMESTAMP = getMidnightTimestamp();
+  const TOMORROW_MIDNIGHT_TIMESTAMP = TODAY_MIDNIGHT_TIMESTAMP + DAY_MILLIS;
+  
+  if (givenTimestamp && givenTimestamp < TOMORROW_MIDNIGHT_TIMESTAMP && givenTimestamp >= TODAY_MIDNIGHT_TIMESTAMP) {
+    console.log("givenTimestamp falls within today");
+    return true;
+  }
+  return false;
+}
+
+// Check if a given timestamp is any time before the previous day
+function isBeforeYesterday(givenTimestamp) {
+
+  const DAY_MILLIS = 86400000;
+  const YESTERDAY_MIDNIGHT_TIMESTAMP = getMidnightTimestamp() - DAY_MILLIS;
+
+  if (givenTimestamp < YESTERDAY_MIDNIGHT_TIMESTAMP) {
+    console.log("givenTimestamp falls on a day BEFORE yesterday (or earlier)");
+    return true;
+  }
+  
+  return false;
+}
