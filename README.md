@@ -182,7 +182,7 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
     - Create `todayEntryIndex` global, with its value set in `getUserProgressData`, to insert new entries into the correct location (index for the current day)
 
 **Explored/practiced:**
-  - Recursion examples, starting with a trivial example (incrementing a number recursively)
+  - [Recursion examples (Gist link for code)](https://gist.github.com/LearningNerd/311ff984274792a4beab1b4a0f1fe919), starting with a trivial example (incrementing a number recursively)
   - Got myself stuck for a little while on implementing a recursive factorial function. (Yay being stuck!) Got myself unstuck -- I just got the order of parameters mixed up, basically. lol.
   - Read a bit about how the call stack works in JavaScript
 
