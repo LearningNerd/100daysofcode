@@ -183,19 +183,18 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
 
 **Explored/practiced:**
   - Recursion examples, starting with a trivial example (incrementing a number recursively)
-  - Got myself stuck on implementing a recursive factorial function, yay being stuck!
+  - Got myself stuck for a little while on implementing a recursive factorial function. (Yay being stuck!) Got myself unstuck -- I just got the order of parameters mixed up, basically. lol.
   - Read a bit about how the call stack works in JavaScript
 
 **Resources:**
   - [Understanding Javascript Function Executions — Call Stack, Event Loop , Tasks & more](https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec)
-  - 
 
 <hr/>
 
 **100 Days of Code Tracker App -- Next:**
+  - Add offset to UTC timestamp to set "midnight" cutoff to 2am local time (since I often stay up past midnight these days)
   - When saving progress for the day, update the current day in the grid view. (Maybe use Firebase childadded event?)
-  - Use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)
-  - Possible bug: using Unix timestamps for missed days (midnight at UTC time) but using local time for other entries will probably be confusing and cause some unexpected behavior.
+  - Use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)  
   - Layout bug: grid overflows if window size is smaller (no responsive design!)
 
   - Bug: if user clicks *between* each box in the grid, modal appears -- it shouldn't!
