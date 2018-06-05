@@ -61,7 +61,7 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
 
 **#TIL:**
   - The `fr` unit in CSS is super cool -- it stands for a part (or *fraction*) of the available space!
-  - Finally using CSS Grids again
+  - Finally using CSS Grids again!
 
 **Resources on CSS Grids:**
   - https://gridbyexample.com/examples/
@@ -77,7 +77,7 @@ A don't-break-the-chain style app to keep track of my progress with the #100Days
   - Add a modal that appears when clicking each day, displaying information for that day (date, project link, and tweet link)
   - Modal disappers when clicking outside of it
   
-**#TIL:**
+**Explored:**
   - Messed around with the Performance tab in Chrome DevTools -- so much more to learn here!
   - Render-Blocking CSS: https://developers.google.com/web/tools/lighthouse/audits/blocking-resources 
 
@@ -170,7 +170,7 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
 
 ### Day 14: 2018-06-04
 
-**Finished:**
+**100 Days of Code Tracker App -- Finished:**
   - When displaying user progress, insert entries into the database for any previous days that were missed, and display the progress grid according to the latest updates
     - Small bug fix: changed loop condition so entry for current day no longer gets added
   - Update database structure:
@@ -181,10 +181,18 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
     - Update `handleFormSubmit`  to save progress for current day with `timestamp` property
     - Create `todayEntryIndex` global, with its value set in `getUserProgressData`, to insert new entries into the correct location (index for the current day)
 
+**Explored/practiced:**
+  - Recursion examples, starting with a trivial example (incrementing a number recursively)
+  - Got myself stuck on implementing a recursive factorial function, yay being stuck!
+  - Read a bit about how the call stack works in JavaScript
+
+**Resources:**
+  - [Understanding Javascript Function Executions — Call Stack, Event Loop , Tasks & more](https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec)
+  - 
 
 <hr/>
 
-**Next:**
+**100 Days of Code Tracker App -- Next:**
   - When saving progress for the day, update the current day in the grid view. (Maybe use Firebase childadded event?)
   - Use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)
   - Possible bug: using Unix timestamps for missed days (midnight at UTC time) but using local time for other entries will probably be confusing and cause some unexpected behavior.
