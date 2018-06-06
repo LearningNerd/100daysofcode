@@ -191,26 +191,36 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
 
 <hr/>
 
+### Day 15: 2018-06-05
+
+**100 Days of Code Tracker App -- Finished:**
+  - Bug fix: error on login for new users, due to one temporary reference to `userDataArray.length` when it could still be null. (Oops!) Easy fix!
+  - Bug fix: display "didyoucode" section and grid for first-time users
+  - Review and update logic flow in `getUserProgressData` (Tried to refactor but still stuck with one repetitive line across separate conditions... but maybe there's no way around it? Not sure!)
+  - Display "Welcome!" if user's GitHub display name isn't set, instead of "Welcome, null!"
+  - Add "appinfo" paragraph with link to repo, short description, and instructions.
+
+
+
+
+<hr/>
+
 **100 Days of Code Tracker App -- Next:**
   - Add offset to UTC timestamp to set "midnight" cutoff to 2am local time (since I often stay up past midnight these days)
   - When saving progress for the day, update the current day in the grid view. (Maybe use Firebase childadded event?)
-  - Use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)  
+  
+  - If possible, use a more efficient method to add previous missed entries to database (instead of calling `.set` several times)  
   - Layout bug: grid overflows if window size is smaller (no responsive design!)
-
   - Bug: if user clicks *between* each box in the grid, modal appears -- it shouldn't!
-  - If user doesn't have any data saved yet, display an inspirational message to get started with their 100 days challenge! 
-  - Save a record in the database for any previous days that were missed  
+  
   - Switch back to using VS Code rather than doing all development in Glitch, and use Git locally and sync directly to GitHub!
-  - Set date cut-off time to something more like 2am (since I keep saving my work for the day after midnight!)
   - Either delete notes field or fix CSS so it fits in the modal
+  - Allow user to edit previous entries
+  - If user skips a day (or more) without checking in, prompt to save updates for those days
+  
 
 **Other feature ideas:**
-  - Title of project
-  - Short description of project
-  - Other notes? (What did I learn that day?)
-  - ...an entire blog post related to the project?
-  - Video recording of that day's work.
-  - Time spent studying that day?
-  - Other statistics (lines of code written? etc etc) ... probably not
-  - User setting for cut-off time, applying work to previous day even if after midnight
-  - If user skips a day (or more) without checking in, prompt to save updates for those days as well
+  - Repurpose this project as an add-on to a blogging tool, using blog posts as entries for each day?
+  - Link entries to GitHub repo directly and let users view/edit via GitHub API, following #100DaysOfCode repo's format?
+  - User setting for the day's cut-off time, applying work to previous day even if after midnight
+  
