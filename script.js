@@ -23,6 +23,8 @@ let lastEntryIndex;
 let todayEntryIndex;
 
 // Create a JavaScript object for each HTML element that we need to use
+let appInfoElem = document.getElementById("appinfo");
+
 let userInfoElem = document.getElementById("userinfo");
 let logInOutButton = document.getElementById("loginout");
 
@@ -109,10 +111,19 @@ function handleAuthStateChange (user) {
   if (user) {
     console.log('User successfully logged in to Firebase!');
     
+    // Update global var:
     currentUserId = user.uid;
-    userInfoElem.textContent = "Welcome, " + user.displayName + "!";    
+    
+    if (user.displayName == null) {      
+      userInfoElem.textContent = "Welcome!";
+    } else {
+     userInfoElem.textContent = "Welcome, " + user.displayName + "!";     
+    }
+    
     logInOutButton.textContent = "Log out";
     
+    // Hide "appinfo" section
+    appInfoElem.style.display = "none";
         
      // Get data and display views accordingly
     getUserProgressData();
@@ -129,6 +140,9 @@ function handleAuthStateChange (user) {
     didYouCodeElem.style.display = "none";
     formElem.style.display = "none";
     progressContainerElem.style.display = "none";
+    
+    // Show "appinfo" section
+    appInfoElem.style.display = "block";
     
     clearFormFields();
   }
@@ -194,62 +208,101 @@ function getUserProgressData() {
     // Firebase gives an array when the object's properties are numbers in (mostly) consecutive order
     // NOTE: remember that userDataArray has an empty value for index 0
     let userDataArray = dataSnapshot.val();
-    console.log(userDataArray);
-    console.log(userDataArray.length);
+    console.log(userDataArray);    
 
+    // LOGIC FLOW OVERVIEW:
+    // ----------------------------------------------------------
+      // if user has previous progress:
+          // get data on last entry
+          // if latest entry is today .... (and exists):
+              // set todayEntryIndex to lastEntryIndex
+              // show progress form
+          // else (yesterday or earlier) :
+              // display "didyoucode" section
+
+              // if beforeYesterday:
+                  // add missing entries
+
+              // (whether yesterday or earlier), set todayEntryIndex to userDataArray.length (which is the last entry index + 1)
+
+        // update views to reflect previous progress
+    
+      // else   (user has NO progress, first-timer):
+          // display "didyoucode" section    *** repetitive ... no way to refactor this? :(
+
+    // REGARDLESS of whether user has previous progress:
+      // display progress grid
+
+    
+    // ---------------------------------------------------------
+    
     // If user already has progress:
     if (userDataArray) {
     
+      // Get most recent entry to decide what to display to user
       let lastEntryIndex = userDataArray.length - 1;
       let lastEntryData = userDataArray[lastEntryIndex];
       // For days with progress, get timestamp property; for missed days, the element is just the timestamp value itself (not an object)
       let lastEntryTimestamp = lastEntryData.timestamp ? lastEntryData.timestamp : lastEntryData;
       
       console.log(lastEntryData);
-      
-      // If an entry exists for the current day (even if a missed day), display progress form with the data
-      if ( isToday(lastEntryTimestamp) ) {
-        
-        // Set todayEntryIndex global; used by handleNoClick and handleFormSubmit!
-        todayEntryIndex = lastEntryIndex;
 
-        // Only show data in form fields if entry has data
+
+      if ( isToday(lastEntryTimestamp) ) {
+       
+        // global todayEntryIndex: used by handleNoClick and handleFormSubmit!
+        todayEntryIndex = lastEntryIndex;
+        
+        // Only show data in form fields if latest entry has data (wasn't a missed day)
         if (lastEntryData.timestamp) {
           displayCurrentDayData(lastEntryData);
         }
         displayProgressForm();
         
-      // Otherwise if no progress has been saved yet for the current date, 
+      // or if latest entry was yesterday OR earlier:
       } else {
-        console.log("no data for today yet!");
+      
         // Display "Did you code?" section
         didYouCodeElem.style.display = "block";
-                
-       // If latest entry is for the day before yesterday (or earlier), add missing entries
-       if ( isBeforeYesterday(lastEntryTimestamp) ) {
-         // Set userDataArray to an updated array containing complete list of entries up to yesterday         
-         userDataArray = addMissingEntries(userDataArray);
-       }
         
-       // Update todayEntryIndex global; used by handleNoClick and handleFormSubmit!
-       todayEntryIndex = userDataArray.length;
-           // remember: if last entry wasn't today, then it must be yesterday!
-           // and if it runs, addMissingEntries() will insert an entry for yesterday,
-           // so if yesterday was day #3, length of the array is 4 (the 0 slot is empty),
-           // so today would be day #4 (same as array length)
-
-      }// end else
-
+        // If latest entry is for the day before yesterday (or earlier), add missing entries
+        if ( isBeforeYesterday(lastEntryTimestamp) ) {
+         
+          // Set userDataArray to an updated array containing complete list of entries up to (and including) yesterday         
+          userDataArray = addMissingEntries(userDataArray);
+          
+        }
+        
+        // After (optionally) adding missing entries,
+        // Update todayEntryIndex global; used by handleNoClick and handleFormSubmit!
+        todayEntryIndex = userDataArray.length;             
+             // userDataArray.length gives the last entry index + 1 due to firebase structure, without needing to update/store global lastEntryIndex
+        
+      } //end: else if entry was yesterday or earlier
+        
       console.log("todayEntryIndex: " + todayEntryIndex);
-      
-      // Display progress grid based on user's data (after adding missing entries, if needed)
+    
+      // Update progress grid view based on user's data ( after (optionally) adding missing entries )
       createGridBoxes(userDataArray);
-    
+      
+    // Or if user has NO previous progress (first-timer),
     } else {
-      // TODO: display an inspirational message to get started with their 100 days challenge!
-    }
+      
+      // Display "Did you code?" section
+      didYouCodeElem.style.display = "block";
+      
+      userInfoElem.textContent += " Start your #100DaysOfCode by entering today's entry (click one of the buttons below)! Then come back every day to track your progress. For each day that you complete, the day on the grid below will turn green.";
+      
+      // *** TODO: display ABOUT section / an inspirational message to get started with their 100 days challenge!
+      
+    } //end if user has no previous progress
     
-  }
+    
+    // Regardless of whether user has prior progress or is a first-timer,
+    // Make progress grid view visible (either fallback for no progress, or with updated progress)
+    progressContainerElem.style.display = "block";
+    
+  } //end handleCurrentData()
   
 } // end getUserProgressData()
 
@@ -310,9 +363,6 @@ function clearFormFields() {
 function createGridBoxes(userDataArray) {
   // Note: hard-coded in HTML: 100 divs!!!
   console.log("called createGridBoxes");
-  
-  // Make container visible
-  progressContainerElem.style.display = "block";
   
   console.log(userDataArray);
   
