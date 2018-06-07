@@ -201,7 +201,19 @@ No coding today either, and I feel bad about missing two days in a row! Argh! Oh
   - Add "appinfo" paragraph with link to repo, short description, and instructions.
 
 
+<hr/>
 
+### Day 16: 2018-06-06
+
+Today I more officially started a new project: a visualization tool to easily see the structure of (binary) trees and how to traverse them! **Project on Glitch: [See the Tree!](https://glitch.com/edit/#!/see-the-tree))**
+
+**Tree Visualization -- Finished:**
+  - Reviewed the very basics of the [p5JS library](https://p5js.org) to draw with the canvas API
+  - Wrote a function to iteratively traverse through a balanced binary tree (depth-first search)
+  - Drew a simple diagram representing a binary tree -- but it only looks right for a three-node, balanced binary tree. It's still incomplete/broken for any larger trees.
+  
+**Next:**
+  - Fix my tree-drawing function so it works for any size binary tree (assuming it's balanced, for now)
 
 <hr/>
 
