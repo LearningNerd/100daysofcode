@@ -217,6 +217,16 @@ Today I more officially started a new project: a visualization tool to easily se
 
 <hr/>
 
+### Day 16: 2018-06-07
+
+Today unexpectedly turned into an all-day coding day, which was really fun! (Although I did fall behind on other work... oh well, I'll catch up tomorrow.) I started a ***new project:*** automating the volunteer signup process for my meetup group's DTLA Community Hack Night events, using Google Apps Script to work with Google Forms, Sheets and Gmail.
+
+**Explored:**
+  - I discovered that Google has a full API for generating Google Forms programmatically! See: [Forms Service documentation](https://developers.google.com/apps-script/reference/forms/)
+  
+  
+<hr/>
+
 **100 Days of Code Tracker App -- Next:**
   - Add offset to UTC timestamp to set "midnight" cutoff to 2am local time (since I often stay up past midnight these days)
   - When saving progress for the day, update the current day in the grid view. (Maybe use Firebase childadded event?)
