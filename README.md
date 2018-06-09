@@ -234,7 +234,22 @@ Today unexpectedly turned into an all-day coding day, which was really fun! (Alt
 
 **Explored:**
   - I discovered that Google has a full API for generating Google Forms programmatically! See: [Forms Service documentation](https://developers.google.com/apps-script/reference/forms/)
-  
+
+<hr/>
+
+### Day 18: 2018-06-08
+
+**Finished:**
+  - Bug fix: assign volunteers to *first* available slot (in order of the hard-coded rows indicating available slots), instead of assigning them to the *last* available slot.
+  - Figured out how to access rows *outside* of the values returned by the form submission event. (There's no "active sheet" when a form is submitted, just some data about what was inserted into the database and where.)
+
+**#TIL:**
+  - I forgot and relearned that there's no good way to break out of JavaScript's `.forEach` method. (Which is why my function always returned the *last* available volunteer slot instead of the first one; it would iterate through every possibility, saving matchces and overriding them all, so the last match would be the one that gets returned.)
+
+**Next:**
+  - Set up the email messages with dynamic info based on the assigned volunteer slot
+  - Test that the emails get sent and that the formatting looks OK
+  - Insert values into the spreadsheet to mark which volunteers were emailed
   
 <hr/>
 
