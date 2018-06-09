@@ -217,9 +217,20 @@ Today I more officially started a new project: a visualization tool to easily se
 
 <hr/>
 
-### Day 16: 2018-06-07
+### Day 17: 2018-06-07
 
 Today unexpectedly turned into an all-day coding day, which was really fun! (Although I did fall behind on other work... oh well, I'll catch up tomorrow.) I started a ***new project:*** automating the volunteer signup process for my meetup group's DTLA Community Hack Night events, using Google Apps Script to work with Google Forms, Sheets and Gmail.
+
+**Finished:**
+  - Used regular expressions and JavaScript's `replace` method to re-order the numbers in a big string! ([Gist link with the code](https://gist.github.com/LearningNerd/100185e3156c868d8139d06d409bc384))
+  - Practiced using `.map` and `.filter` to transform data, yay!
+  - Learned a lot about Google Apps Script and the Google Sheets API
+  - Linked my Google Apps Script code to run when triggered by a spreadsheet's form submission event. Super convenient!
+  - After overcomplicating things with an extra step and extra data structures (converting data from one form to another, then back again), after a short break I immediately realized how silly I had been and knew exactly how to solve my problem in a much easier way.
+  
+**#TIL:**
+  - Take breaks whether you want to or not! The small risk of forgetting what you were doing or losing your momentum is well worth it for the fresh perspective (and health benefits) of walking away from a problem for at least a little while.
+  - It's almost always worth it to do more planning before coding. Don't forget that again!
 
 **Explored:**
   - I discovered that Google has a full API for generating Google Forms programmatically! See: [Forms Service documentation](https://developers.google.com/apps-script/reference/forms/)
