@@ -221,7 +221,7 @@ Today I more officially started a new project: a visualization tool to easily se
 
 Today unexpectedly turned into an all-day coding day, which was really fun! (Although I did fall behind on other work... oh well, I'll catch up tomorrow.) I started a ***new project:*** automating the volunteer signup process for my meetup group's DTLA Community Hack Night events, using Google Apps Script to work with Google Forms, Sheets and Gmail.
 
-**Finished:**
+**Volunteer signup automation -- Finished:**
   - Used regular expressions and JavaScript's `replace` method to re-order the numbers in a big string! ([Gist link with the code](https://gist.github.com/LearningNerd/100185e3156c868d8139d06d409bc384))
   - Practiced using `.map` and `.filter` to transform data, yay!
   - Learned a lot about Google Apps Script and the Google Sheets API
@@ -239,18 +239,45 @@ Today unexpectedly turned into an all-day coding day, which was really fun! (Alt
 
 ### Day 18: 2018-06-08
 
-**Finished:**
+**Volunteer signup automation -- Finished:**
   - Bug fix: assign volunteers to *first* available slot (in order of the hard-coded rows indicating available slots), instead of assigning them to the *last* available slot.
   - Figured out how to access rows *outside* of the values returned by the form submission event. (There's no "active sheet" when a form is submitted, just some data about what was inserted into the database and where.)
 
 **#TIL:**
   - I forgot and relearned that there's no good way to break out of JavaScript's `.forEach` method. (Which is why my function always returned the *last* available volunteer slot instead of the first one; it would iterate through every possibility, saving matchces and overriding them all, so the last match would be the one that gets returned.)
 
-**Next:**
+
+<hr/>
+
+### Day 19: 2018-06-09
+
+No coding this weekend. Today was *super* busy, going straight from teaching my class to rock climbing with some friends to board games with some other friends, then staying up super late watching Bob Ross painting on a surprisingly popular Twitch livestream channel dedicated to "The Joy of Painting". That made me happy. 
+
+I did write code today, but only in the context of teaching my JavaScript class. We built a tiny project as a group to practice working with APIs. I even got stuck on a bug for a little bit during that live demo, but it turned out to be a great teachable moment!
+
+<hr/>
+
+### Day 20: 2018-06-10
+
+After sleeping in late (I blame you, Bob Ross!), I had lunch with my dad and then went straight to a friend's birthday party. After that, I totally crashed. Waking up at 11am and going to bed at 9pm left me no time for coding. (I could have carved out the time by saying no to other things, but I didn't want to miss out on seeing friends and family this weekend. So, no big deal.)
+
+<hr/>
+
+### Day 21: 2018-06-11
+
+
+**Volunteer signup automation -- Finished:**
+  - ...
+  
+  
+  
+**Volunteer signup automation -- Next:**
   - Set up the email messages with dynamic info based on the assigned volunteer slot
   - Test that the emails get sent and that the formatting looks OK
   - Insert values into the spreadsheet to mark which volunteers were emailed
-  
+
+
+
 <hr/>
 
 **100 Days of Code Tracker App -- Next:**
