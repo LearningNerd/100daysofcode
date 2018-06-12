@@ -273,7 +273,24 @@ Today I finished the first working version of my volunteer signup automation too
   - Insert values into the spreadsheet to mark which volunteers were emailed
   - Also created and fixed a bunch of little bugs, but finally got it working!
 
+**#TIL:**
+  - Many email clients will modify your email to insert line breaks after every 78 characters or so -- only if the email is in plain text format. (That's why the formatting for my auto-respond test email looks all weird on my phone.) There's this big debate over a feature/spec called `format=flowed` that supposedly handles this in a nicer way, but from what I read on internet forums, it looks like it isn't well-supported. Long story short: HTML emails have won.
+
 <hr/>
+
+### Day 22: 2018-06-12
+
+**#TIL:**
+  - If you add Boolean values, JavaScript converts them to 1s and 0s and does the math! `true + true` is 2. Apparently `null` also gets converted to a 0, so `null + true` is 1. But `undefined` and `NaN` added to anything gives `NaN` as the result.
+  
+
+<hr/>
+
+**Volunteer signup automation -- Next:**
+  - Switch to HTML emails instead of plain text (to avoid weird extra line breaks being added in some email clients)
+  - Modify Google Form to remove time slots from available choices once they're taken
+  - Dynamic message based on days left until the event ("See you next week" vs "see you this Tues" etc)
+  - Maybe: Schedule automatic reminders leading up to the event
 
 **100 Days of Code Tracker App -- Next:**
   - Add offset to UTC timestamp to set "midnight" cutoff to 2am local time (since I often stay up past midnight these days)
