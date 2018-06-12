@@ -265,18 +265,13 @@ After sleeping in late (I blame you, Bob Ross!), I had lunch with my dad and the
 
 ### Day 21: 2018-06-11
 
+Today I finished the first working version of my volunteer signup automation tool using Google Forms, Sheets, and Google Apps Script. I tested it out a few times (sending emails to myself), so I think it's ready to go live!
 
 **Volunteer signup automation -- Finished:**
-  - ...
-  
-  
-  
-**Volunteer signup automation -- Next:**
   - Set up the email messages with dynamic info based on the assigned volunteer slot
   - Test that the emails get sent and that the formatting looks OK
   - Insert values into the spreadsheet to mark which volunteers were emailed
-
-
+  - Also created and fixed a bunch of little bugs, but finally got it working!
 
 <hr/>
 
