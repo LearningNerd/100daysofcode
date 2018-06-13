@@ -276,9 +276,16 @@ Today I finished the first working version of my volunteer signup automation too
 **#TIL:**
   - Many email clients will modify your email to insert line breaks after every 78 characters or so -- only if the email is in plain text format. (That's why the formatting for my auto-respond test email looks all weird on my phone.) There's this big debate over a feature/spec called `format=flowed` that supposedly handles this in a nicer way, but from what I read on internet forums, it looks like it isn't well-supported. Long story short: HTML emails have won.
 
+
 <hr/>
 
 ### Day 22: 2018-06-12
+
+**Volunteer signup automation -- Finished:**
+  - Now that it's working (and it's live!), I repurposed the script to save myself some time in helping recurit and connect mentors for the AngelHack LA hackathon. Worked like a charm!
+
+**Explored:**
+  - I also tinkered a bit with the p5JS library for canvas animation: setting the frame rate, starting and stopping animations, and how their `draw()` function works as a nice abstraction over `requestAnimationFrame` and the Canvas API's clunky functions.
 
 **#TIL:**
   - If you add Boolean values, JavaScript converts them to 1s and 0s and does the math! `true + true` is 2. Apparently `null` also gets converted to a 0, so `null + true` is 1. But `undefined` and `NaN` added to anything gives `NaN` as the result.
