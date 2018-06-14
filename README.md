@@ -289,15 +289,43 @@ Today I finished the first working version of my volunteer signup automation too
 
 **#TIL:**
   - If you add Boolean values, JavaScript converts them to 1s and 0s and does the math! `true + true` is 2. Apparently `null` also gets converted to a 0, so `null + true` is 1. But `undefined` and `NaN` added to anything gives `NaN` as the result.
-  
 
 <hr/>
 
+### Day 23: 2018-06-13
+
+I did a little coding, technically speaking, but it was so little that I'm still going to say this was a missed day. And that's fine. I still spent the entire day writing curriculum *about* code, teaching another coding workshop, planning events related to coding...
+
+But the point of this 100-day challenge is to *learn new stuff* and give myself permission to work on creative projects not related to my day-to-day work (even if it is code-related). So I want to do a better job of managing my time, going forward. I'm thinking that my coding time will need to be the first thing I do each day. I need to get into the mindset that all the "time-sensitive" stuff can wait a little bit longer.
+
+
+<hr/>
+
+### Day 24: 2018-06-14
+
+**Volunteer signup automation -- Finished:**
+  - Switch to HTML emails instead of plain text, to avoid weird extra line breaks being added in some email clients. (For now, I just inserted a bunch of `<br/>` tags to convert the plain text email to an HTML email version.)
+
+
+**Animated stepping through code -- Next:**
+  - Challenge: For my tree visualizer project, I think it'll be easier for me to understand my own (still broken) code if I can see what it draws step by step. What's a good general strategy for taking a chunk of code and rewriting it so that it can run in stages (stepping through each time I click a button, for example)?
+
+
+
+
+
+<hr/>
+
+
+
 **Volunteer signup automation -- Next:**
-  - Switch to HTML emails instead of plain text (to avoid weird extra line breaks being added in some email clients)
+  - Generate the HTML email first, then strip out/replace tags as needed. (I think that'll be cleaner than the quick hack I threw in recently to replace `\n` stuff with a bunch of `<br/>` tags!)
+  - Improve timeslot assignment: if all combinations based on the user's choices are already taken, suggest some of the other available slots that match part of the user's criteria. Or at the very least, just suggest some of the open slots.
   - Modify Google Form to remove time slots from available choices once they're taken
   - Dynamic message based on days left until the event ("See you next week" vs "see you this Tues" etc)
   - Maybe: Schedule automatic reminders leading up to the event
+  - Research: what's possible with the Gmail API? I'd love to auto-update the spreadsheet when I get replies from the volunteers, instead of manually updating it every time somebody confirms or cancels.
+
 
 **100 Days of Code Tracker App -- Next:**
   - Add offset to UTC timestamp to set "midnight" cutoff to 2am local time (since I often stay up past midnight these days)
@@ -312,7 +340,6 @@ Today I finished the first working version of my volunteer signup automation too
   - Allow user to edit previous entries
   - If user skips a day (or more) without checking in, prompt to save updates for those days
   
-
 **Other feature ideas:**
   - Repurpose this project as an add-on to a blogging tool, using blog posts as entries for each day?
   - Link entries to GitHub repo directly and let users view/edit via GitHub API, following #100DaysOfCode repo's format?
