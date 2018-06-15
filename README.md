@@ -306,16 +306,21 @@ But the point of this 100-day challenge is to *learn new stuff* and give myself 
 **Volunteer signup automation -- Finished:**
   - Switch to HTML emails instead of plain text, to avoid weird extra line breaks being added in some email clients. (For now, I just inserted a bunch of `<br/>` tags to convert the plain text email to an HTML email version.)
 
+**Tree Visualization -- Finished:**
+  - Explored a couple simple patterns for rewriting a loop so that it can be advanced one step at a time with an external trigger (like a button click)
+  - Experimented with a couplde p5js functions that make it easy to control when the next frame is frawn (instead of looping continuosly). Way easier than I thought!
+  - Successfully repurposed my old tree-drawing code to step through each iteration with a mouse click. (The code is still totally broken, but the iterating/visualizing part is a reusable pattern for sure.)
 
-**Animated stepping through code -- Next:**
-  - Challenge: For my tree visualizer project, I think it'll be easier for me to understand my own (still broken) code if I can see what it draws step by step. What's a good general strategy for taking a chunk of code and rewriting it so that it can run in stages (stepping through each time I click a button, for example)?
+**Tree Visualization -- Next:**
+  - Go back to the drawing board to practice traversing trees. Maybe do it on paper first, and then try to write the code again from scratch. (Sometimes that's more instructive / more productive than wrestling with some old broken code.)
 
-
-
-
+**Learning Vim -- new project (of sorts):**
+  - Since I'm in the process of switching to a Mac and I need to relearn a bunch of keyboard shortcuts anyway, I figured this would be the perfect time to also start learning how to use Vim!
+  - I completed the `vimtutor` thing (I didn't even know that was a built-in command!), and that was quite fun.
+  - I fell down the rabbit hole of customizing with color scheme and `vimrc` settings. Whoops! That was also pretty fun, though.
+  - (I'm not counting the Vim stuff as coding time; that was just relaxing time. I went home early since I haven't been feeling well, and instead of taking a nap, I couldn't seem to stop myself from playing around with Vim while lying in bed, haha)
 
 <hr/>
-
 
 
 **Volunteer signup automation -- Next:**
