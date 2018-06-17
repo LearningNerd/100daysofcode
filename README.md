@@ -322,6 +322,28 @@ But the point of this 100-day challenge is to *learn new stuff* and give myself 
 
 <hr/>
 
+### Day 25: 2018-06-15
+
+Oops! I was so busy writing curriculum for my programming class, I didn't reserve any time for actually *programming!* Once again, I definitely *could* have made time for side projects today if I had done just a little more planning (and a little less procratinating). The rest of this week, I'll write some code first thing every morning.
+
+<hr/>
+
+### Day 26: 2018-06-16
+
+Today I took an unexpected but fun detour -- learning all about AppleScript! (Still exploring all the features of my new Mac now that I've made the switch.) 
+
+**Learning AppleScript -- new project:**
+
+  - I spent a couple hours testing some example code and hacking together a script tied to a keyboard shortcut to let me copy the currently-selected text from a page and automatically append the quote with its source URL to a notes file. It works OK, but there are some obvious limitations.
+  - [List of AppleScript resources](https://gist.github.com/ccstone/716173d330caa118d09c)
+
+**Learning Vim -- new project (of sorts):**
+
+  - I learned some new commands for scrolling up and down on a page!
+  - And I learned how to copy text from Vim to the clipboard -- something that I consider to be a very basic feature, but it's not at all intuitive with Vim, and it wasn't even mentioned in the intro tutorial. Hmph!
+
+<hr/>
+
 
 **Volunteer signup automation -- Next:**
   - Generate the HTML email first, then strip out/replace tags as needed. (I think that'll be cleaner than the quick hack I threw in recently to replace `\n` stuff with a bunch of `<br/>` tags!)
