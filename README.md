@@ -353,8 +353,22 @@ No coding today, none at all. I spent Father's Day with my family. We went out f
 
 ### Day 28: 2018-06-18
 
-  - Go back to the drawing board to practice traversing trees. Maybe do it on paper first, and then try to write the code again from scratch. (Sometimes that's more instructive / more productive than wrestling with some old broken code.)
+Didn't do much today, since I was busy with meetings and catching up on emails and event planning and other day-to-day stuff that really starts to pile up when I say yes to everything, haha.
+
+**Tree Visualization:**
+  - I did indeed go back to the drawing board today, literally! I played around with drawing trees by hand to get a feel for the spacing if the nodes are all the same size.
+  - Lesson learned: I really *do* need to know the size of the tree before I can accurately draw it, if the nodes are all the same size. (I still think that *maybe* I can draw it on the fly if I just make the nodes get smaller for each subsequent level.)
+  - I felt bad about how much time I spent drawing instead of coding, but I'm still going to count this as "coding time", generally speaking, because a lot of coding is just thinking and planning and reading documentation anyhow! I'm reminding myself that thinking "oh, that doesn't count because I'm not actually writing code" is not a productive way of looking at it.
+  - Still *stumped* by trees though. (haha, so punny)
   
+
+<hr/>
+
+### Day 29: 2018-06-19
+
+**Tree Visualization -- next:**
+  - An idea I had just for fun: draw a template of a tree with the Canvas API, linked to its matching data structure with values containing its coordinates (and color?), and then animate it even for my *broken* algorithms. Error turned to art.
+
 
 <hr/>
 
