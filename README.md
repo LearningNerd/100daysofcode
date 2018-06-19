@@ -307,8 +307,8 @@ But the point of this 100-day challenge is to *learn new stuff* and give myself 
   - Switch to HTML emails instead of plain text, to avoid weird extra line breaks being added in some email clients. (For now, I just inserted a bunch of `<br/>` tags to convert the plain text email to an HTML email version.)
 
 **Tree Visualization -- Finished:**
-  - Explored a couple simple patterns for rewriting a loop so that it can be advanced one step at a time with an external trigger (like a button click)
-  - Experimented with a couplde p5js functions that make it easy to control when the next frame is frawn (instead of looping continuosly). Way easier than I thought!
+  - [**Gist link with tiny examples:**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Explored a couple simple patterns for rewriting a loop so that it can be advanced one step at a time with an external trigger (like a button click)
+  - Experimented with a couple p5js functions that make it easy to control when the next frame is frawn (instead of looping continuosly). Way easier than I thought!
   - Successfully repurposed my old tree-drawing code to step through each iteration with a mouse click. (The code is still totally broken, but the iterating/visualizing part is a reusable pattern for sure.)
 
 **Tree Visualization -- Next:**
@@ -341,6 +341,20 @@ Today I took an unexpected but fun detour -- learning all about AppleScript! (St
 
   - I learned some new commands for scrolling up and down on a page!
   - And I learned how to copy text from Vim to the clipboard -- something that I consider to be a very basic feature, but it's not at all intuitive with Vim, and it wasn't even mentioned in the intro tutorial. Hmph!
+
+<hr/>
+
+### Day 27: 2018-06-17
+
+No coding today, none at all. I spent Father's Day with my family. We went out for brunch and then I accidentally napped away the rest of the afternoon! I caught up on some chores, then had a quiet evening at home. I could have done some coding instead of any of those things, but it was such a nice, lazy Sunday. I needed the break. (Still, I can make time for coding practice even on Sundays, and I'd like to do so moving forward.)
+
+
+<hr/>
+
+### Day 28: 2018-06-18
+
+  - Go back to the drawing board to practice traversing trees. Maybe do it on paper first, and then try to write the code again from scratch. (Sometimes that's more instructive / more productive than wrestling with some old broken code.)
+  
 
 <hr/>
 
