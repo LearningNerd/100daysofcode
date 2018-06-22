@@ -389,11 +389,19 @@ Didn't do much today, since I was busy with meetings and catching up on emails a
 
 **Tree Visualization -- Finished:**
   - Refactored yesterday's code into a couple different functions, using inputs instead of global variables
+  
   - Drew a balanced binary tree based on the size of the tree! Yay!
-  - Solidified my understanding of how nodes and levels in a tree relate to each other. For any given level of the tree, the number of nodes on that level is `
+  
+  - Solidified my understanding of how nodes and levels in a tree relate to each other. For any given level of the tree, the number of nodes on that level is `2^(n-1)` where `n` is 1 for the last level of the tree, and `n` increases for each parent level moving upwards to the root.
+  
+  - The number of nodes doubles for each level when moving from the root down to the leaves (so the number of nodes is cut in half if moving in the other direcion)
+  
+  - The distance between the nodes follows the exact same pattern as the nodes themselves; at any given level `n`, the distance between each node `(nodeSize + xMargin)` is multiplied by `2^(n-1)` (again, where `n` is 1 for the last level of the tree, increasing for each parent level).
+  
+  - Created and solved a bug caused by a classic off-by-one error -- there were extra nodes being drawn, because I forgot to subtract the initial node that's drawn before all the others are done in a loop. Oops! Just changed the starting number for the loop iterator. :)
   
 **Tree Visualization -- Next:**
-  - Figure out why extra nodes are being drawn. Looks like an off-by-one error.
+  - Animate it! (Challenge: how to step through a *nested* looping action, one step at a time)
   - Try drawing bottom level nodes relative to the width of the canvas, to take up all the available space.
 
 <hr/>
