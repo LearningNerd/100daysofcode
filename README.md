@@ -366,9 +366,35 @@ Didn't do much today, since I was busy with meetings and catching up on emails a
 
 ### Day 29: 2018-06-19
 
-**Tree Visualization -- next:**
-  - An idea I had just for fun: draw a template of a tree with the Canvas API, linked to its matching data structure with values containing its coordinates (and color?), and then animate it even for my *broken* algorithms. Error turned to art.
+**Tree Visualization:**
+  - More drawing trees, but this time focused on how to programmatically draw them, starting with an example tree.
+  - I made some progress ands then got stumped (again) on how to calculate the x-coordinate of a parent node based on its children, especially with including a margin in between each node.
 
+<hr/>
+
+### Day 30: 2018-06-20
+
+**Tree Visualization:**
+
+  - **Goal:** First, draw an example of a binary tree -- just with some parameters, not mapped to an actual tree stored as a data structure yet. And next, animate the drawing step-by-step. Finally, link it to my code to visualize even my *broken* algorithms. Error turned to art.
+  
+  - I got unstuck and solved my little geometry problem -- it was so simple! To calculate the x coordinate of a parent node, I was calculating the midpoint between its two children, but I forgot to add that value (half the distance) to the x coordinate of the first node. So I was doing `(x2 - x1)/2` when I actually needed `x1 + (x2 - x1)/2` !
+  
+  - **Loose ends:** My drawings are a mess now, so I kind of want to go back and fix them up. But it's so time-consuming (since I'm such a perfectionist), I know that I probably should leave it be for now.
+
+
+<hr/>
+
+### Day 31: 2018-06-21
+
+**Tree Visualization -- Finished:**
+  - Refactored yesterday's code into a couple different functions, using inputs instead of global variables
+  - Drew a balanced binary tree based on the size of the tree! Yay!
+  - Solidified my understanding of how nodes and levels in a tree relate to each other. For any given level of the tree, the number of nodes on that level is `
+  
+**Tree Visualization -- Next:**
+  - Figure out why extra nodes are being drawn. Looks like an off-by-one error.
+  - Try drawing bottom level nodes relative to the width of the canvas, to take up all the available space.
 
 <hr/>
 
