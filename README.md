@@ -404,6 +404,25 @@ Didn't do much today, since I was busy with meetings and catching up on emails a
   - Animate it! (Challenge: how to step through a *nested* looping action, one step at a time)
   - Try drawing bottom level nodes relative to the width of the canvas, to take up all the available space.
 
+
+
+<hr/>
+
+### Day 32: 2018-06-22
+
+**Tree Visualization -- Finished:**
+
+ - [**Gist link with tiny examples:**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): I experimented with stepping through a nested loop structure, one step at a time based on an external trigger. It's tricky! I added my annotated example code at the end of that file.
+ 
+ 
+
+**Tree Visualization -- Next:**
+  - Take a closer look at my step-through nested loop example:
+    - Identify why each iteration runs an extra time
+    - Rewrite it to see if I can write the outer loop *first* (maybe with a different combination of `else`/`else if`?)
+
+
+
 <hr/>
 
 
