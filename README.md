@@ -414,14 +414,15 @@ Didn't do much today, since I was busy with meetings and catching up on emails a
 
  - [**Gist link with tiny examples:**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): I experimented with stepping through a nested loop structure, one step at a time based on an external trigger. It's tricky! I added my annotated example code at the end of that file.
  
- 
+<hr/>
 
-**Tree Visualization -- Next:**
-  - Take a closer look at my step-through nested loop example:
-    - Identify why each iteration runs an extra time
-    - Rewrite it to see if I can write the outer loop *first* (maybe with a different combination of `else`/`else if`?)
+### Day 33: 2018-06-23
 
-
+**Tree Visualization -- Finished:**
+  - I took a closer look at my step-through nested loop example, rewrote it a bunch of times, and fixed the off-by-one errors by cleaning up the logic and reordering things. I think that's the best I can do for now!
+  
+**Next:**
+  - Rewrite the step-through nested loop as a reusable, higher-order function that can more easily hook into existing code to run it step by step. (I imagine I'll just need to take a couple functions and conditions as inputs.)
 
 <hr/>
 
