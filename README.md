@@ -433,8 +433,21 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Attempted to rewrite the step-through nested loop as a reusable, higher-order function that can more easily hook into existing code to run it step by step. No luck yet!
   - Returned to my simple nested while loop and experimented with moving around the console.log statements. I confirmed for myself that for each iteration of the outer loop, *both* the outer and inner console.log statements will run, resulting in seeing the same message twice when I logged both the outer and inner indexes.
 
+<hr/>
+
+### Day 35: 2018-06-25
+
+**Tree Visualization -- Finished:**
+  - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Figured out why the inner loop iterates one extra time for my parameterized function: I was evaluating the conditions too soon, that's all! Fixed it up (latest version is at the bottom of the Gist).
+  
+**In progress:**
+  - In linking that function with my previous tree-drawing loop, I confirmed that it really isn't useful to try to turn this into a general interface. There are too many parameters!
+  
 **Next:**
-  - Fix up my generalized function and figure out why the inner loop iterates one extra time. Double check if the logic got changed in the process of parameterizing this into a high-order function.
+  - Confirm that my generalized looping function won't work because variables that need to be initialized would be stuck within the local scope of the setup function.
+  - Confirm that my generalized function is also broken in the sense that passing the indexes as arguments will actually *reset* those indexes each time the inner and outer looping functions are called!
+  - Draw the tree step by step! Put this experiment aside for now and just use the step-through nested loop code as an example, not an interface.
+
 
 <hr/>
 
