@@ -412,17 +412,29 @@ Didn't do much today, since I was busy with meetings and catching up on emails a
 
 **Tree Visualization -- Finished:**
 
- - [**Gist link with tiny examples:**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): I experimented with stepping through a nested loop structure, one step at a time based on an external trigger. It's tricky! I added my annotated example code at the end of that file.
+ - [**Gist link with tiny examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): I experimented with stepping through a nested loop structure, one step at a time based on an external trigger. It's tricky! I added my annotated example code at the end of that file.
  
 <hr/>
 
 ### Day 33: 2018-06-23
 
 **Tree Visualization -- Finished:**
-  - I took a closer look at my step-through nested loop example, rewrote it a bunch of times, and fixed the off-by-one errors by cleaning up the logic and reordering things. I think that's the best I can do for now!
-  
+  - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): I took a closer look at my step-through nested loop example, rewrote it a bunch of times, and fixed the off-by-one errors by cleaning up the logic and reordering things. I think that's the best I can do for now!
+
+<hr/>
+
+### Day 34: 2018-06-24
+
+Feeling really sick today, after two weeks of this on-and-off-again cold that wouldn't really come out but wouldn't go away. So I did a lot of sleeping and lying in bed. It took me all day to convince myself that I'd still enjoy spending an hour on programming. As usual, I'm glad I did!
+
+At first I thought this thread I'm following might be too abstract and undirected to be useful, but tinkering with loops for an hour today has really renewed my appreciation for their subtleties. (My loop-fu has definitely gotten rusty!) 
+
+**Tree Visualization -- Finished:**
+  - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Attempted to rewrite the step-through nested loop as a reusable, higher-order function that can more easily hook into existing code to run it step by step. No luck yet!
+  - Returned to my simple nested while loop and experimented with moving around the console.log statements. I confirmed for myself that for each iteration of the outer loop, *both* the outer and inner console.log statements will run, resulting in seeing the same message twice when I logged both the outer and inner indexes.
+
 **Next:**
-  - Rewrite the step-through nested loop as a reusable, higher-order function that can more easily hook into existing code to run it step by step. (I imagine I'll just need to take a couple functions and conditions as inputs.)
+  - Fix up my generalized function and figure out why the inner loop iterates one extra time. Double check if the logic got changed in the process of parameterizing this into a high-order function.
 
 <hr/>
 
