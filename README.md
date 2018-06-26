@@ -439,14 +439,12 @@ At first I thought this thread I'm following might be too abstract and undirecte
 
 **Tree Visualization -- Finished:**
   - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Figured out why the inner loop iterates one extra time for my parameterized function: I was evaluating the conditions too soon, that's all! Fixed it up (latest version is at the bottom of the Gist).
-  
-**In progress:**
-  - In linking that function with my previous tree-drawing loop, I confirmed that it really isn't useful to try to turn this into a general interface. There are too many parameters!
+  - Fixed up the code so now it works with the tree-drawing function, yay!
+  - I realized that my step-through loop template still doesn't match the order of a regular nested loop, now that I've broken it up into three main sections (the start of the outer loop, the inner loop, and the end of the outer loop).
   
 **Next:**
-  - Confirm that my generalized looping function won't work because variables that need to be initialized would be stuck within the local scope of the setup function.
-  - Confirm that my generalized function is also broken in the sense that passing the indexes as arguments will actually *reset* those indexes each time the inner and outer looping functions are called!
-  - Draw the tree step by step! Put this experiment aside for now and just use the step-through nested loop code as an example, not an interface.
+  - Experiment with my step-through nested loop template some more, reordering things so the inner index gets reset at the *start* of the next inner iteration.
+  - Try to make the step-through function actually do ***one*** step at a time, instead of doing *two* steps on the first iteration of every outer loop.
 
 
 <hr/>
