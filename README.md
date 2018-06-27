@@ -448,11 +448,14 @@ At first I thought this thread I'm following might be too abstract and undirecte
 
 **Tree Visualization -- Finished:**
   - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Fixed the little bug I noticed yesterday. All I had to do was reset the inner index at the *start* of the outer loop, just like how it works in a normal nested loop. So easy, and yet I didn't see it this entire time! lol
-  - 
+  - Fixed it so that only one step will run at a time (simply by adding one more `return` statement, silly me!)
+  - Now checking the inner loop condition (instead of only checking the outer/inner loop toggle), because I found an important new bug: if the last half of the outer loop changes the values used for the inner loop's condition, then the inner loop will still run even when it shouldn't!
+  - Linked it back up with my tree-drawing example code, and it works! I even made an animated GIF to celebrate this tiny victory, haha.
 
 **Next:**
-  - Try to make the step-through function actually do ***one*** step at a time, instead of doing *two* steps on the first iteration of every outer loop.
-
+  - Back to the drawing board with tree traversl algorithms
+  - For easier visualization, as a temporary fix, add coordinates as values in each node in my tree structures and use them within my (probably broken) traversal algorithms to draw each one when it's visited.
+  - Future challenge: how to dynamically generate coordinates of nodes to draw any given binary tree!
 
 <hr/>
 
