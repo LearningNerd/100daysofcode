@@ -441,9 +441,16 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Figured out why the inner loop iterates one extra time for my parameterized function: I was evaluating the conditions too soon, that's all! Fixed it up (latest version is at the bottom of the Gist).
   - Fixed up the code so now it works with the tree-drawing function, yay!
   - I realized that my step-through loop template still doesn't match the order of a regular nested loop, now that I've broken it up into three main sections (the start of the outer loop, the inner loop, and the end of the outer loop).
-  
+
+<hr/>
+
+### Day 36: 2018-06-26
+
+**Tree Visualization -- Finished:**
+  - [**Gist link with examples**](https://gist.github.com/LearningNerd/b27ace0a2ffdca4d9f1394d2b676ca5e): Fixed the little bug I noticed yesterday. All I had to do was reset the inner index at the *start* of the outer loop, just like how it works in a normal nested loop. So easy, and yet I didn't see it this entire time! lol
+  - 
+
 **Next:**
-  - Experiment with my step-through nested loop template some more, reordering things so the inner index gets reset at the *start* of the next inner iteration.
   - Try to make the step-through function actually do ***one*** step at a time, instead of doing *two* steps on the first iteration of every outer loop.
 
 
