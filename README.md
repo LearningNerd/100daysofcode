@@ -452,11 +452,22 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - Now checking the inner loop condition (instead of only checking the outer/inner loop toggle), because I found an important new bug: if the last half of the outer loop changes the values used for the inner loop's condition, then the inner loop will still run even when it shouldn't!
   - Linked it back up with my tree-drawing example code, and it works! I even made an animated GIF to celebrate this tiny victory, haha.
 
+<hr/>
+
+### Day 37: 2018-06-27
+
+**Tree Visualization -- Finished:**
+  - Back to the drawing board with tree traversal algorithms, and sketching them out on a blank piece of paper got me unstuck! Finally!
+  - I realized an important detail that I hadn't seen in all my previous attempts: I can just *always* push *both* nodes into the stack of next nodes to visit, and *always* set the next current node to the next node in the stack!
+  - So far, using 3-level perfect binary trees, it looks like the only difference between *depth-first* and *breadth-first* search is whether I choose the next node FIFO-style or LIFO-style -- as a stack (last-in-first-out) or as a queue (first-in-first-out).
+  
 **Next:**
-  - Back to the drawing board with tree traversl algorithms
+  - Can I draw my example binary tree from the top down, instead of the bottom up? I should be able to, given the size of the tree! And that'll make it easier to assign coordinates as values to my example tree data structures (or generate entirely new tree structures on the fly while drawing a tree).
+  - Oh yeah, I should also repurpose the top-down tree-drawing function into a pure tree-structure-generating function!
   - For easier visualization, as a temporary fix, add coordinates as values in each node in my tree structures and use them within my (probably broken) traversal algorithms to draw each one when it's visited.
   - Future challenge: how to dynamically generate coordinates of nodes to draw any given binary tree!
 
+  
 <hr/>
 
 
