@@ -460,7 +460,6 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - Back to the drawing board with tree traversal algorithms, and sketching them out on a blank piece of paper got me unstuck! Finally!
   - I realized an important detail that I hadn't seen in all my previous attempts: I can just *always* push *both* nodes into the stack of next nodes to visit, and *always* set the next current node to the next node in the stack!
   - So far, using 3-level perfect binary trees, it looks like the only difference between *depth-first* and *breadth-first* search is whether I choose the next node FIFO-style or LIFO-style -- as a stack (last-in-first-out) or as a queue (first-in-first-out).
-  
 
 <hr/>
 
@@ -470,10 +469,22 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - Redid my tree-drawing function to draw it from the top down (instead of bottom up). Had some funny little bugs, then got stuck on some math and took a break.
   - At night I tried again to fix that bug, and my attempts created a whole bunch of other funny little bugs, and then I finally fixed it! Top-down trees are just as easy. (I just need more practice at arithmetic. I didn't even need logarithms, haha)
 
+<hr/>
+
+### Day 39: 2018-06-29
+
+**Tree Visualization -- Finished:**
+  - Wrote a function to generate perfect binary trees of `n` number of levels, one step at a time. Yay!
+  
+  - I realized that instead of using a nested loop to increment the tree level at each step and using that to determine how many "rows" of nodes to create (or draw), I can just use a single loop if I use the total number of nodes as the looping condition! So much simpler!
+
+
 **Next:**
-  - Repurpose the top-down tree-drawing function into a pure tree-structure-generating function!
-  - For easier visualization, as a temporary fix, add coordinates as values in each node in my tree structures and use them within my (probably broken) traversal algorithms to draw each one when it's visited.
-  - Future challenge: draw any given binary tree *on the fly*, figuring out the coordinates based only on the tree structure itself.
+  - Rewrite my tree-drawing function as a single loop instead of a nested loop. (Can I set the y position for each level without a nested loop? I think so...)
+
+  - Update my tree-generating function to also draw the tree *on the fly*, figuring out the coordinates as it steps through, breadth-first.
+
+  - Modify my tree-generating function to use a depth-first strategy and see how that works out.
 
 
   
