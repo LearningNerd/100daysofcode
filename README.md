@@ -461,27 +461,21 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - I realized an important detail that I hadn't seen in all my previous attempts: I can just *always* push *both* nodes into the stack of next nodes to visit, and *always* set the next current node to the next node in the stack!
   - So far, using 3-level perfect binary trees, it looks like the only difference between *depth-first* and *breadth-first* search is whether I choose the next node FIFO-style or LIFO-style -- as a stack (last-in-first-out) or as a queue (first-in-first-out).
   
-**Next:**
-
-  - Oh yeah, I should also repurpose the top-down tree-drawing function into a pure tree-structure-generating function!
-  - For easier visualization, as a temporary fix, add coordinates as values in each node in my tree structures and use them within my (probably broken) traversal algorithms to draw each one when it's visited.
-  - Future challenge: how to dynamically generate coordinates of nodes to draw any given binary tree!
-
-
 
 <hr/>
 
 ### Day 38: 2018-06-28
 
-
 **Tree Visualization -- Finished:**
   - Redid my tree-drawing function to draw it from the top down (instead of bottom up). Had some funny little bugs, then got stuck on some math and took a break.
-  
-**Next:**
-  - Bug to fix: the distance between nodes is *way* too small. Its initial value is too small and the math is wrong. Do I need logarithms for this? How can I do the opposite of my previous distance calculation that doubled it based on the current level of the tree?
+  - At night I tried again to fix that bug, and my attempts created a whole bunch of other funny little bugs, and then I finally fixed it! Top-down trees are just as easy. (I just need more practice at arithmetic. I didn't even need logarithms, haha)
 
-  
-  
+**Next:**
+  - Repurpose the top-down tree-drawing function into a pure tree-structure-generating function!
+  - For easier visualization, as a temporary fix, add coordinates as values in each node in my tree structures and use them within my (probably broken) traversal algorithms to draw each one when it's visited.
+  - Future challenge: draw any given binary tree *on the fly*, figuring out the coordinates based only on the tree structure itself.
+
+
   
 <hr/>
 
