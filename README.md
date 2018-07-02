@@ -479,14 +479,32 @@ At first I thought this thread I'm following might be too abstract and undirecte
   - I realized that instead of using a nested loop to increment the tree level at each step and using that to determine how many "rows" of nodes to create (or draw), I can just use a single loop if I use the total number of nodes as the looping condition! So much simpler!
 
 
-**Next:**
-  - Rewrite my tree-drawing function as a single loop instead of a nested loop. (Can I set the y position for each level without a nested loop? I think so...)
+<hr/>
 
+### Day 40: 2018-06-30
+
+No coding today. So exhausted after a long day of teaching and talking about code, and then an ordeal with my car. If I could've planned for that inadvance, I would've done some programming practice earlier! Oh well, at least I had a pretty good streak this past week.
+
+<hr/>
+
+### Day 41: 2018-07-01
+
+No coding today either, but there was no good reason for it. I just didn't feel well. I felt pretty depressed, out of nowhere. It had been a good while since I last felt that way, so it sort of took me by surprise. It was as if I had absolutely no energy, and no motivation to do anything other than some comfort-seeking. But the good news is these sorts of days are becoming less and less common for me now, and I'm better at trusting that I'll feel like my normal self again soon.
+
+
+<hr/>
+
+### Day 42: 2018-07-02
+
+**In progress:**
+    - Rewrite my tree-drawing function as a single loop instead of a nested loop. (Can I set the y position for each level without a nested loop? I think so...)
+
+**Next:**
   - Update my tree-generating function to also draw the tree *on the fly*, figuring out the coordinates as it steps through, breadth-first.
 
   - Modify my tree-generating function to use a depth-first strategy and see how that works out.
 
-
+  
   
 <hr/>
 
