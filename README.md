@@ -491,18 +491,20 @@ No coding today. So exhausted after a long day of teaching and talking about cod
 
 No coding today either, but there was no good reason for it. I just didn't feel well. I felt pretty depressed, out of nowhere. It had been a good while since I last felt that way, so it sort of took me by surprise. It was as if I had absolutely no energy, and no motivation to do anything other than some comfort-seeking. But the good news is these sorts of days are becoming less and less common for me now, and I'm better at trusting that I'll feel like my normal self again soon.
 
-
 <hr/>
 
 ### Day 42: 2018-07-02
 
-**In progress:**
-    - Rewrite my tree-drawing function as a single loop instead of a nested loop. (Can I set the y position for each level without a nested loop? I think so...)
+**Tree Visualization -- Finished:**
+    - Combined my single-loop tree-generating function with my previous tree-drawing function, so now I have a function that generates trees and draws each node at the same time!
 
 **Next:**
-  - Update my tree-generating function to also draw the tree *on the fly*, figuring out the coordinates as it steps through, breadth-first.
+  - Save a larger example binary tree from my tree-generating function and test my depth-first search algorithm again. I have a feeling it might be wrong!
+  
+  - Modify my working tree-generating function to assign coordinates to each node. Then modify my tree-traversal functions to also draw each node based on their coordinate values, so I can see the nodes appearing on the screen in the order they're visited.
 
-  - Modify my tree-generating function to use a depth-first strategy and see how that works out.
+
+  - Maybe: Modify my tree-generating function to use a depth-first strategy and see how that works out.
 
   
   
