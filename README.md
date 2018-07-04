@@ -496,17 +496,42 @@ No coding today either, but there was no good reason for it. I just didn't feel 
 ### Day 42: 2018-07-02
 
 **Tree Visualization -- Finished:**
-    - Combined my single-loop tree-generating function with my previous tree-drawing function, so now I have a function that generates trees and draws each node at the same time!
+  - Combined my single-loop tree-generating function with my previous tree-drawing function, so now I have a function that generates trees and draws each node at the same time!
+  - Made a function that generates a tree with x and y coordinates that can be drawn later, to make it easier to test different traversal algorithms.
+  - Animated my depth-first tree traversal algorithm and it works like a charm!
 
-**Next:**
-  - Save a larger example binary tree from my tree-generating function and test my depth-first search algorithm again. I have a feeling it might be wrong!
+**Tree Visualization -- Ideas for later:**
+  - Experiment: can I *generate* a tree / draw it on the fly with a depth-first search algorithm?
+
+<hr/>
+
+### Day 43: 2018-07-03
+
+**#TIL:**
+  - Trees are great for representing choices/outcomes in a game, and thinking through the consequences of a move (as far ahead as one can) is a mental depth-first traversal! ([source](https://stackoverflow.com/a/37069004))
+    
+  - "Breadth-first" and "level-order" are two names for the same type of traversal
+  - There are 3 subtypes of "depth-first" traversals: preorder, postorder, and inorder ([source](https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/))
+    - Preorder Traversal (Root-Left-Right)
+    - Postorder Traversal (Left-Right-Root)
+    - Inorder Traversal (Left-Root-Right)
+
+**Tree Visualization -- Finished:**
+  - Wrote a function that generates random (non-perfect) binary trees of a given number of levels, assigning coordinates as well. This version assigns numerical values in the order that the nodes are created.
+
+**Tree Visualization -- Next challenges/questions:**
+  - Modify my non-perfect-tree-generator function to create binary *search* trees!
+  - Create another function that generates binary search trees based on a list of data
+
+  - Write a *recursive* algorithm for breadth- and depth-first search
   
-  - Modify my working tree-generating function to assign coordinates to each node. Then modify my tree-traversal functions to also draw each node based on their coordinate values, so I can see the nodes appearing on the screen in the order they're visited.
-
-
-  - Maybe: Modify my tree-generating function to use a depth-first strategy and see how that works out.
-
-  
+  - Given a binary tree, count the number of nodes in the tree ([source](http://cslibrary.stanford.edu/110/BinaryTrees.html))
+    - Add up the sum of all nodes' values
+    - Add up the sum of each level's values (return an array of level sums)
+  - Given a binary tree, find its height / maximum depth (longest path to farthest leaf)
+  - Given a binary *search* tree, find the min and max value in the tree
+  - Given a value and a binary *search* tree, insert the value into the appropriate place
+  - Given a binary search tree, find and return the value X
   
 <hr/>
 
