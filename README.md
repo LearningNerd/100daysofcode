@@ -457,6 +457,7 @@ At first I thought this thread I'm following might be too abstract and undirecte
 ### Day 37: 2018-06-27
 
 **Tree Visualization -- Finished:**
+  - [**Gist link for tree traversing and generating**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5)
   - Back to the drawing board with tree traversal algorithms, and sketching them out on a blank piece of paper got me unstuck! Finally!
   - I realized an important detail that I hadn't seen in all my previous attempts: I can just *always* push *both* nodes into the stack of next nodes to visit, and *always* set the next current node to the next node in the stack!
   - So far, using 3-level perfect binary trees, it looks like the only difference between *depth-first* and *breadth-first* search is whether I choose the next node FIFO-style or LIFO-style -- as a stack (last-in-first-out) or as a queue (first-in-first-out).
@@ -466,6 +467,7 @@ At first I thought this thread I'm following might be too abstract and undirecte
 ### Day 38: 2018-06-28
 
 **Tree Visualization -- Finished:**
+  - [**Gist link for tree traversing and generating**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5)
   - Redid my tree-drawing function to draw it from the top down (instead of bottom up). Had some funny little bugs, then got stuck on some math and took a break.
   - At night I tried again to fix that bug, and my attempts created a whole bunch of other funny little bugs, and then I finally fixed it! Top-down trees are just as easy. (I just need more practice at arithmetic. I didn't even need logarithms, haha)
 
@@ -474,6 +476,7 @@ At first I thought this thread I'm following might be too abstract and undirecte
 ### Day 39: 2018-06-29
 
 **Tree Visualization -- Finished:**
+  - [**Gist link for tree traversing and generating**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5)
   - Wrote a function to generate perfect binary trees of `n` number of levels, one step at a time. Yay!
   
   - I realized that instead of using a nested loop to increment the tree level at each step and using that to determine how many "rows" of nodes to create (or draw), I can just use a single loop if I use the total number of nodes as the looping condition! So much simpler!
@@ -496,6 +499,7 @@ No coding today either, but there was no good reason for it. I just didn't feel 
 ### Day 42: 2018-07-02
 
 **Tree Visualization -- Finished:**
+  - [**Gist link for tree traversing and generating**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5)
   - Combined my single-loop tree-generating function with my previous tree-drawing function, so now I have a function that generates trees and draws each node at the same time!
   - Made a function that generates a tree with x and y coordinates that can be drawn later, to make it easier to test different traversal algorithms.
   - Animated my depth-first tree traversal algorithm and it works like a charm!
@@ -517,22 +521,61 @@ No coding today either, but there was no good reason for it. I just didn't feel 
     - Inorder Traversal (Left-Root-Right)
 
 **Tree Visualization -- Finished:**
+  - [**Gist link for tree traversing and generating**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5)
   - Wrote a function that generates random (non-perfect) binary trees of a given number of levels, assigning coordinates as well. This version assigns numerical values in the order that the nodes are created.
 
-**Tree Visualization -- Next challenges/questions:**
-  - Modify my non-perfect-tree-generator function to create binary *search* trees!
-  - Create another function that generates binary search trees based on a list of data
 
-  - Write a *recursive* algorithm for breadth- and depth-first search
+<hr/>
+
+### Day 44: 2018-07-04
+
+No coding. Just a little work on other things and then time with family for the holiday. (The day Will Smith saved us from the aliens, of course.) I also made the mistake of starting to play video games again, haha.
+
+But I did read a little bit about binary search trees on my phone in between all the festivities. Just enough to work up an appetite.
+
+**#TIL:**
+  - A binary search tree (*ordered* or *sorted* tree) is special kind of binary tree, where the value of every left child node is less than or equal to the value of its parent, and the value of every right child node is more than or equal to the value of its parent. 
+
+<hr/>
+
+### Day 45: 2018-07-05
+
+The main question on my mind right now: how do I create a binary search tree in the first place? Everything I've read online so far talked about how to search through them, insert elements, and just about everything except how to create one. I don't want to just look up the answer though! So I guess I'll tinker with it a bit.
+
+**#TIL:**
+
+By tinkering with an example array and manually turning it into a binary tree, I discovered a few things for myself:
+
+  - A binary search tree looks completely different, depending on the order in which the nodes are inserted and which is set as the root node.
+  - Turning a sorted array into a binary search tree, inserting nodes in the same order, creates an entirely useless BST! (I later learned that's what an *unbalanced* tree is.)
+  - Creating a BST from a sorted array by starting in the middle is much better. A random, unsorted array is also still usually better than the 100% unbalanced tree example above.
+  - I proved to myself that binary search for a sorted array is indeed done in time O( log(n) ) whereas simply looping through the array would take up to time O(n).
+
+Answering my question about binary search in arrays vs binary search trees, via ([source](https://stackoverflow.com/questions/5968937/binary-search-vs-binary-search-tree)):
+
+  - For querying alone, a sorted array with binary search is better than using a binary search tree.
+  - "But constructing a sorted tree is a lot faster than constructing a sorted array, when you're adding elements one at a time."
+  - Inserting/deleting nodes in a binary search tree is O( log(n) ), while inserting/deleting elements into a sorted array is O(n). 
+  - I liked [this blog post](http://blog.lookfar.com/blog/2016/07/28/why-binary-search-trees-matter/) in general, but I think he's flat-out wrong when he said that searching in a binary search tree is faster than searching through an array in general; he never once mentioned binary search through an array! So is this a common misconception?
+
+
+**Finished:**
+  - [**See Gist link for binary search tree stuff**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918): Wrote a function that creates a binary search tree from an array -- just not the most balanced tree, haha. But it's not the *most* unbalanced it could be.
+
+
+**Tree Visualization -- Next challenges/questions:**
+
+  - Solve a couple simpler challenges first:
+    - Traverse through a binary search tree to find a given value
+    - Insert a single value into a binary search tree
   
-  - Given a binary tree, count the number of nodes in the tree ([source](http://cslibrary.stanford.edu/110/BinaryTrees.html))
-    - Add up the sum of all nodes' values
-    - Add up the sum of each level's values (return an array of level sums)
-  - Given a binary tree, find its height / maximum depth (longest path to farthest leaf)
-  - Given a binary *search* tree, find the min and max value in the tree
-  - Given a value and a binary *search* tree, insert the value into the appropriate place
-  - Given a binary search tree, find and return the value X
+  - After that: Loop through an array and call the insertion function on the BST for each new value to generate a BST
+
+  - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js))
+
+  - At some point: Write a *recursive* algorithm for breadth- and depth-first search
   
+
 <hr/>
 
 
