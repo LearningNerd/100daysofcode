@@ -562,6 +562,28 @@ Answering my question about binary search in arrays vs binary search trees, via 
 **Finished:**
   - [**See Gist link for binary search tree stuff**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918): Wrote a function that creates a binary search tree from an array -- just not the most balanced tree, haha. But it's not the *most* unbalanced it could be.
 
+<hr/>
+
+### Day 46: 2018-07-06
+
+No coding. I had a sleep-deprived, no-breaks work sprint and then I decided to spend my evening playing more video games, haha. The addictive power of gaming is *real!* That's why I took such a long hiatus from it. Oh well. Balanced will be restored soon enough.
+
+<hr/>
+
+### Day 47: 2018-07-07
+
+Super super sleepy today after a long day of teaching and a volunteer / planning meeting. So I'm sort of just spinning my wheels tonight. 
+
+**#TIL:**
+  - I realized that my binary tree generating function from the other is flat-out *wrong*, haha. More importantly, I realized why: when inserting new values, it isn't comparing them to *every* parent node. So the "binary search tree condition" isn't holding tree for the tree I generated the other day.
+  
+  - Not only is my code wrong, but my own drawings on paper were also wrong! I clearly did not understand what a binary search tree *really* is. Just like my code, I was only comparing values to their direct parent, not to every parent of those parents. Oops! Now I'll definitely never forget this one, because I feel pretty sheepish right now, haha.
+  
+
+**Finished:**
+  - [**See Gist link for binary search tree stuff**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918): Wrote a function that traverses through a binary search tree to find a given value
+
+
 
 **Tree Visualization -- Next challenges/questions:**
 
@@ -575,6 +597,10 @@ Answering my question about binary search in arrays vs binary search trees, via 
 
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search
   
+
+
+
+
 
 <hr/>
 
