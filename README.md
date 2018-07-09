@@ -584,26 +584,29 @@ Super super sleepy today after a long day of teaching and a volunteer / planning
   - [**See Gist link for binary search tree stuff**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918): Wrote a function that traverses through a binary search tree to find a given value
 
 
+<hr/>
+
+### Day 48: 2018-07-08
+
+**Finished:**
+  - [**See Gist link for binary search tree stuff**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918): Wrote a function that inserts a single value into a binary search tree (based on my broken code from the other day... turns out, it wasn't so broken after all!)
+  - Used that new function in a loop to fix my previous function -- now I'm successfully generating binary search trees from a given array of values. Yay!
+
 
 **Tree Visualization -- Next challenges/questions:**
 
-  - Solve a couple simpler challenges first:
-    - Traverse through a binary search tree to find a given value
-    - Insert a single value into a binary search tree
-  
-  - After that: Loop through an array and call the insertion function on the BST for each new value to generate a BST
+  - Create *randomly generated* BSTs of a given height and/or number of values
 
   - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js))
 
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search
   
 
-
-
-
-
 <hr/>
 
+## Archived to-dos for projects on hold
+
+A good percentage of the projects I start will inevitably be abandoned in favor of something new and shiny. But I do often return to those old projects, so here I'll save my old notes for those projects' to-dos.
 
 **Volunteer signup automation -- Next:**
   - Generate the HTML email first, then strip out/replace tags as needed. (I think that'll be cleaner than the quick hack I threw in recently to replace `\n` stuff with a bunch of `<br/>` tags!)
