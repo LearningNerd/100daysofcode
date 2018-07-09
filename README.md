@@ -598,17 +598,15 @@ Super super sleepy today after a long day of teaching and a volunteer / planning
 ### Day 49: 2018-07-09
 
 **Finished:**
-
-*randomly generated* BSTs of a given height and/or number of values
-
-
-
+  - Wrote a function that creates *randomly generated* BSTs with a given number of values in a given range. (Only numeric data for now.)
+  - Wrote a broken function that generates a random BST and draws it on the fly. (But it's not drawing every node! Some of the coordinates are negative values so they aren't visible on the canvas. Clearly the coordinate generation is broken.)
 
 
 **Tree Visualization -- Next challenges/questions:**
 
+  - Fix my random BST drawing function! Combining my [**generateRandomBST function**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-generaterandombst-js) with my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js)).
 
-  - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js))
+  - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my 
 
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search
  
