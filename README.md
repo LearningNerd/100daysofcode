@@ -593,14 +593,27 @@ Super super sleepy today after a long day of teaching and a volunteer / planning
   - Used that new function in a loop to fix my previous function -- now I'm successfully generating binary search trees from a given array of values. Yay!
 
 
+<hr/>
+
+### Day 49: 2018-07-09
+
+**Finished:**
+
+*randomly generated* BSTs of a given height and/or number of values
+
+
+
+
+
 **Tree Visualization -- Next challenges/questions:**
 
-  - Create *randomly generated* BSTs of a given height and/or number of values
 
   - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js))
 
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search
-  
+ 
+
+
 
 <hr/>
 
