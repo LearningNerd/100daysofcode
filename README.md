@@ -602,16 +602,29 @@ Super super sleepy today after a long day of teaching and a volunteer / planning
   - Wrote a broken function that generates a random BST and draws it on the fly. (But it's not drawing every node! Some of the coordinates are negative values so they aren't visible on the canvas. Clearly the coordinate generation is broken.)
 
 
+<hr/>
+
+### Day 50: 2018-07-10
+
+No coding today. I was feeling somewhat discouraged, and staying at home on another hot summer day playing video games was just too enticing! I feel like a teenager again, straight back to the days in high school when I was obsessed with one game or another and I didn't do my homework until the very last minute! It's so fun and so nostalgic. But coding is really fun too, and I miss it already. Whatever I get stuck on, and regardless of how slow progress feels sometimes, I'll keep at it.
+
+<hr/>
+
+### Day 51: 2018-07-11
+
+Worked on fixing my random binary search tree drawing function! (Combining my [**generateRandomBST function**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-generaterandombst-js) with my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js)).)
+
+**The problem:** if dynamically generating a tree of *any* number of levels, working from the top down, then there's no way to know up front what the initial x distance between the nodes will be! The distance between nodes depends on the height of the tree.
+
+Possible solutions (so far):
+  - Specify the number of levels up front (stop adding nodes when the tree has that many levels)
+  - Or a fancier, more flexible solution: redraw all the nodes each time a new node is added
+
+
+
 **Tree Visualization -- Next challenges/questions:**
-
-  - Fix my random BST drawing function! Combining my [**generateRandomBST function**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-generaterandombst-js) with my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js)).
-
-  - And then: Generate coordinates and/or draw nodes on the fly while generating a BST. (Reuse my 
-
-  - At some point: Write a *recursive* algorithm for breadth- and depth-first search
+  - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
  
-
-
 
 <hr/>
 
