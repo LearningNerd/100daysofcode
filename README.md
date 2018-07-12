@@ -620,9 +620,27 @@ Possible solutions (so far):
   - Specify the number of levels up front (stop adding nodes when the tree has that many levels)
   - Or a fancier, more flexible solution: redraw all the nodes each time a new node is added
 
+Spent an hour on it, made a little progress, but it's still broken! I'll fix it tomorrow.
+
+<hr/>
+
+### Day 52: 2018-07-12
+
+**Finished:**
+  - Wrote a function that returns the height of any given binary tree, perfect or not! ([**See Gist link**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-gettreeheight-js))
+  
+  - Finally fixed my random binary search tree drawing function! (Combining my [**generateRandomBST function**](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-generaterandombst-js) with my [**generateRandomTreeWithCoords function**](https://gist.github.com/LearningNerd/2526ee9c477977ffcf1d65db05089be5#file-generaterandomtreewithcoords-js)) and now also with my **getTreeHeight** function linked above.)
+
+**Questions:**
+  - To find the height of a tree, does it matter how it's traversed? (My gut says "no", if there's no information about the shape of the tree.)
+  - Is there a better way to find the height of a tree, without storing the height of *every node* in a temporary data structure?
 
 
 **Tree Visualization -- Next challenges/questions:**
+  - Display the value of each node in my tree drawings!
+  - Draw lines connecting each node
+  - MAYBE: make a visual distinction between left/right nodes for a BST, maybe a color gradient or "R/L"?
+  
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
  
 
