@@ -637,6 +637,9 @@ Spent an hour on it, made a little progress, but it's still broken! I'll fix it 
 
 
 **Tree Visualization -- Next challenges/questions:**
+  - Separate the code that generates the BST from the code that generates the coordinates and draws it?
+    - Write a general-purpose function that can draw one node, given info about its parent node and level in the tree
+  
   - Display the value of each node in my tree drawings!
   - Draw lines connecting each node
   - MAYBE: make a visual distinction between left/right nodes for a BST, maybe a color gradient or "R/L"?
