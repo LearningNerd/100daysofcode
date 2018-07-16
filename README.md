@@ -635,17 +635,51 @@ Spent an hour on it, made a little progress, but it's still broken! I'll fix it 
   - To find the height of a tree, does it matter how it's traversed? (My gut says "no", if there's no information about the shape of the tree.)
   - Is there a better way to find the height of a tree, without storing the height of *every node* in a temporary data structure?
 
+<hr/>
 
-**Tree Visualization -- Next challenges/questions:**
-  - Separate the code that generates the BST from the code that generates the coordinates and draws it?
-    - Write a general-purpose function that can draw one node, given info about its parent node and level in the tree
-  
+### Day 53: 2018-07-13
+
+No coding. I spent most of the writing *about* coding and making practice challenges and example code snippets. And then I didn't feel like thinking about code anymore when I got home. 
+
+<hr/>
+
+### Day 54: 2018-07-14
+
+No coding. I had a long, sleep-deprived day of teaching, the rock climbing, falling asleep at the climbing gym for a few minutes, napping a bit, and then playing video games.
+
+<hr/>
+
+### Day 55: 2018-07-15
+
+Third day in a row, no coding. Very social day, with an early morning coffee meeting with an old friend, then a family brunch and a nice nap. Board games with friends all night. Definitely feeling guilty about it at this point. This is the longest streak of no coding practice I've had since I started this experiment. Hard to believe I'm more than halfway to 100 days!
+
+Feeling a bit discouraged now with my own lack of motivation. I find myself thinking things like "Maybe I just don't like coding enough" and "Maybe I'm not cut out for this", but then I remind myself that I've taken *many* breaks -- long breaks! -- from writing any code, and I always come back to it. So I must enjoy it. There's nothing wrong with taking a break for a while.
+
+<hr/>
+
+### Day 56: 2018-07-16
+
+Ready to get back in the habit, after three days off! 
+
+**Finished:**
+  - Separated my code into one function that generates a random binary search tree one step per mouse click, which then calls a separate function that draws the given tree -- so the effect is it redraws the tree for each animation frame.
+
+Immediate next steps:
+  - Bug fix:cycles through color array
+  - Create an alternate version (idea #1 from my notes)
+
+
+**Tree Visualization -- Next challenges/questions:**  
   - Display the value of each node in my tree drawings!
   - Draw lines connecting each node
   - MAYBE: make a visual distinction between left/right nodes for a BST, maybe a color gradient or "R/L"?
   
+  - Combine my new separated drawing function to visualize other algorithms:
+    - Depth-first search/traversal
+    - Breadth-first search/traversal
+    
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
- 
+
 
 <hr/>
 
