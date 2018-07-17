@@ -662,23 +662,29 @@ Feeling a bit discouraged now with my own lack of motivation. I find myself thin
 Ready to get back in the habit, after three days off! 
 
 **Finished:**
-  - Separated my code into one function that generates a random binary search tree one step per mouse click, which then calls a separate function that draws the given tree -- so the effect is it redraws the tree for each animation frame.
+  - ([See Gist](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-drawtree-2018-07-16-js)) Separated my code into one function that generates a random binary search tree one step per mouse click, which then calls a separate function that draws the given tree -- so the effect is it redraws the tree for each animation frame.
 
-Immediate next steps:
-  - Bug fix:cycles through color array
-  - Create an alternate version (idea #1 from my notes)
+<hr/>
+
+### Day 57: 2018-07-17
+
+**Finished:**
+  - Bug fix: now cycles through color array, so no bug due to an undefined array index
+  - Bug fix: using `pixelDensity(1)` trick so that now the entire canvas is cleared on each frame, instead of only the top left quadrant (a bug only on retina displays). I even posted a comment about it [on the pull request for p5js here](https://github.com/processing/p5.js/pull/2852)!
+  
+  - Now drawing lines connecting the nodes. That was incredibly easy, now that the child node coordinates are based on the coordinates of their parent.
+  
+  - Now displaying the value of each node, with text size based on node size and number of digits
+
 
 
 **Tree Visualization -- Next challenges/questions:**  
-  - Display the value of each node in my tree drawings!
-  - Draw lines connecting each node
-  - MAYBE: make a visual distinction between left/right nodes for a BST, maybe a color gradient or "R/L"?
-  
-  - Combine my new separated drawing function to visualize other algorithms:
+ - Create an alternate version (idea #1 from my notes)
+ - Combine my new separated drawing function to visualize other algorithms:
     - Depth-first search/traversal
     - Breadth-first search/traversal
-    
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
+
 
 
 <hr/>
