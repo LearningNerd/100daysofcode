@@ -676,6 +676,7 @@ Ready to get back in the habit, after three days off!
   
   - Now displaying the value of each node, with text size based on node size and number of digits
 
+  - Also displaying the tree as JSON at each step, on the canvas next to the drawing
 
 
 **Tree Visualization -- Next challenges/questions:**  
@@ -683,6 +684,7 @@ Ready to get back in the habit, after three days off!
  - Combine my new separated drawing function to visualize other algorithms:
     - Depth-first search/traversal
     - Breadth-first search/traversal
+  - Make a better algorithm for calculating distance between nodes; the nodes don't need to be so far apart as the tree increases in size!
   - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
 
 
