@@ -669,7 +669,7 @@ Ready to get back in the habit, after three days off!
 ### Day 57: 2018-07-17
 
 **Finished:**
-  - Bug fix: now cycles through color array, so no bug due to an undefined array index
+  -  ([See Gist](https://gist.github.com/LearningNerd/daa5a94953627d93a20ea8d540c66918#file-drawtree-2018-07-16-js)) Bug fix: now cycles through color array, so no bug due to an undefined array index
   - Bug fix: using `pixelDensity(1)` trick so that now the entire canvas is cleared on each frame, instead of only the top left quadrant (a bug only on retina displays). I even posted a comment about it [on the pull request for p5js here](https://github.com/processing/p5.js/pull/2852)!
   
   - Now drawing lines connecting the nodes. That was incredibly easy, now that the child node coordinates are based on the coordinates of their parent.
@@ -678,16 +678,54 @@ Ready to get back in the habit, after three days off!
 
   - Also displaying the tree as JSON at each step, on the canvas next to the drawing
 
+<hr/>
+
+### Day 58: 2018-07-18
+
+No coding. Well, not for my own projects or for learning new stuff. I did write a bunch of code for tiny example projects to use in my class. It's hard to come up with projects that are interesting, that also don't need a lot of code, that can focus on just *one* new concept. Like arrays without loops, before talking about loops and then looping through arrays.
+
+Anyhow, my mistake today was that I answered emails before doing anything else, and then I got caught up in other work. I know that the only way to get myself to do something is to do it first thing in the morning and give myself permission to not address other things until a designated time. 
+
+Oh, but I did learn a bunch about Vim yesterday and today!
+
+**New Vim stuff:**
+  - How to install Vim plugins (manually)
+  - How to set up file-specific config stuff (like key bindings fo only one file type)
+  - How to automatically run commands usint `autocmd`
+  - I tried out three Markdown plugins (better syntax highlighting)
+  - I set up [grip, a Github-flavored Markdown previewer](https://github.com/joeyespo/grip) and used the [asyncrun.vim plugin](https://github.com/skywind3000/asyncrun.vim) with `autocmd` to automatically run the Markdown previewe web server window in the background when I open a Markdown file
+  - Then I set up an auto-save script so that Vim will save my files every N milliseconds, and since grip watches my files, it'll automatically refresh the page on every save. Yay!
+  - Learned a bit about how syntax highlighters work in vim, so I could turn off the Markdown bold/italic delimiters completely. (Fixing a bug where `***bolditalic* onlybold**` breaks everything, even though GitHub converts it to HTML exactly as expected. How annoying!)
+  - Spent way too much time customizing the syntax highlighting for Markdown and GitHub-flavored Markdown specifically.
+  - Learned how to override highlighting rules and the colors set for each tag, from within my `vimrc` file.
+  - Figured out how to open split-panes, open different files, and switch between them
+  - Relearned how to search for things within a file
+
+<hr/>
+
+
+### Day 59: 2018-07-19
+
+**Finished:**
+
+  - ([See Gist](https://gist.github.com/LearningNerd/13dc9e9f920030a37fb1d272628d95b8)) Created three simple recursion examples: generating a sum, generating an array of values, and then using an *immutable* array of values (not so nice with recursion though!)
+  
+  - Created a first tiny visualization of the steps of my recursive code, first using `setTimeout()` and then instead by pushing values to a queue and then drawing those frames by iterating through the queue on each mouse click.
 
 **Tree Visualization -- Next challenges/questions:**  
- - Create an alternate version (idea #1 from my notes)
- - Combine my new separated drawing function to visualize other algorithms:
+  - Test my new drawing code with a recursive Fibonacci sequence generator, visualizing the values and ouput at each step
+  - Write a recursive algorithm for breadth- and depth-first search through a binary tree
+    - And then visualize it with my new frame-queue-drawing code
+  
+  - Use the queue structure to draw my random binary tree:
+   - Version 1: A queue of objects (takes up a lot of memory though!)
+   - Version 2: Use an intermediary function to generate coords/values and push *each node* to the queue individually
+ 
+ - Use this new structure/technique to visualize other algorithms:
     - Depth-first search/traversal
     - Breadth-first search/traversal
+    
   - Make a better algorithm for calculating distance between nodes; the nodes don't need to be so far apart as the tree increases in size!
-  - At some point: Write a *recursive* algorithm for breadth- and depth-first search, and for BST functions too
-
-
 
 <hr/>
 
