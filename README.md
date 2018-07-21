@@ -712,6 +712,14 @@ Oh, but I did learn a bunch about Vim yesterday and today!
   
   - Created a first tiny visualization of the steps of my recursive code, first using `setTimeout()` and then instead by pushing values to a queue and then drawing those frames by iterating through the queue on each mouse click.
 
+<hr/>
+
+### Day 60: 2018-07-20
+
+
+https://gist.github.com/LearningNerd/13dc9e9f920030a37fb1d272628d95b8#file-workinprogress-7-20-js
+
+
 **Tree Visualization -- Next challenges/questions:**  
   - Test my new drawing code with a recursive Fibonacci sequence generator, visualizing the values and ouput at each step
   - Write a recursive algorithm for breadth- and depth-first search through a binary tree
@@ -726,6 +734,9 @@ Oh, but I did learn a bunch about Vim yesterday and today!
     - Breadth-first search/traversal
     
   - Make a better algorithm for calculating distance between nodes; the nodes don't need to be so far apart as the tree increases in size!
+
+
+
 
 <hr/>
 
