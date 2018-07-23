@@ -736,7 +736,61 @@ https://gist.github.com/LearningNerd/13dc9e9f920030a37fb1d272628d95b8#file-worki
   - Make a better algorithm for calculating distance between nodes; the nodes don't need to be so far apart as the tree increases in size!
 
 
+<hr/>
 
+### Day 61: 2018-07-21
+
+No coding today. After teaching my class, I took a nap and woke up just in time to go to this huge street food / night market event, and then I got home just in time to pass out. It was a fun day, but definitely over-scheduled. Oh well!
+
+<hr/>
+
+### Day 62: 2018-07-22
+
+Today I think I feel like taking a break from messing around with trees and recursion. Today I feel like doing something completely different. At least for a little while. I'm pretty sleepy too, but I know I can make time for a little programming practice today. So I was thinking, maybe I can make a game! Tetris has been on my mind for a while now since I was helping one student work towards building it herself. I'm not sure just how much work it would take to finish it, so that might be fun!
+
+[**Project on Glitch (for now)**](https://glitch.com/edit/#!/yay-tetris)
+
+**Tetris features / problems to solve:**
+
+  - Animating blocks to move down the screen
+  - Making them stop at the bottom
+  - Drawing another block after the previous block has fallen
+  - Collision detection
+  - Moving blocks left and right on key press
+  - Game over when blocks reach the top of the screen
+  - Making the blocks into each Tetris shape
+  - Randomizing which block is next
+  - Rotating the blocks on key press
+  - Deleting when a row is completed
+  - Tracking the score
+
+**Finished:**
+  - Animating a block to move down the screen
+  - A tetromino object constructor, with methods for movement
+  - A method for checking if the tetromino has reached the bottom
+  - Create a new block when the previous block lands
+  
+
+<hr/>
+
+### Day 63: 2018-07-23
+
+I'd love to finish Tetris today! Since I worked both days this weekend, I planned for today to be my Sunday.
+
+**Next:**
+  - Refactor to replace confusing `x` and `y` variables to `row` and `col`.
+  - Actually write the code and test locally, and use Git for version control! (I want to finally get into the habit of writing everything in Vim, anyhow.)
+
+**Finished:**
+  - Set up a 2D array, tracking which squares in the game grid are occupied.
+  - Refactored `isFalling` to `hasRoomBelow`, which checks the `gameGrid` for collisions (instead of checking based on pixel calculations).
+  - Refactored the tetrmino's `moveDown` method to switch blocks on/off inside the `gameGrid`.
+  
+  - Learned how to generate an array with the `Array` constructor, `fill`, and `map`. Found a couple interesting quirks:
+  
+    - The `Array` constructor will generate an array of the given size, but the elements are "empty" -- they have no value, not even `null` or `undefined`! So weird! And that means you can't iterate over them with `map`. So the solution is to first `fill` them with a value like `null`, and then use `map`.
+    - Lesson learned: don't use a nested `fill` -- since arrays are objects, the generated array will be filled with pointers that all point to the *same* array, rather than separate arrays with the same elements.
+    
 
 <hr/>
 
