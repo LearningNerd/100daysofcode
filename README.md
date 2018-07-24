@@ -770,12 +770,11 @@ Today I think I feel like taking a break from messing around with trees and recu
   - A method for checking if the tetromino has reached the bottom
   - Create a new block when the previous block lands
   
-
 <hr/>
 
 ### Day 63: 2018-07-23
 
-I'd love to finish Tetris today! Since I worked both days this weekend, I planned for today to be my Sunday.
+I'd love to finish Tetris today! Since I worked both days this weekend, I planned for today to be my Sunday. (Update: I only spent an hour or two coding today though.)
 
 **Next:**
   - Refactor to replace confusing `x` and `y` variables to `row` and `col`.
@@ -790,7 +789,13 @@ I'd love to finish Tetris today! Since I worked both days this weekend, I planne
   
     - The `Array` constructor will generate an array of the given size, but the elements are "empty" -- they have no value, not even `null` or `undefined`! So weird! And that means you can't iterate over them with `map`. So the solution is to first `fill` them with a value like `null`, and then use `map`.
     - Lesson learned: don't use a nested `fill` -- since arrays are objects, the generated array will be filled with pointers that all point to the *same* array, rather than separate arrays with the same elements.
-    
+
+<hr/>
+
+### Day 64: 2018-07-24
+
+  - ....
+
 
 <hr/>
 
