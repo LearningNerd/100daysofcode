@@ -776,10 +776,6 @@ Today I think I feel like taking a break from messing around with trees and recu
 
 I'd love to finish Tetris today! Since I worked both days this weekend, I planned for today to be my Sunday. (Update: I only spent an hour or two coding today though.)
 
-**Next:**
-  - Refactor to replace confusing `x` and `y` variables to `row` and `col`.
-  - Actually write the code and test locally, and use Git for version control! (I want to finally get into the habit of writing everything in Vim, anyhow.)
-
 **Finished:**
   - Set up a 2D array, tracking which squares in the game grid are occupied.
   - Refactored `isFalling` to `hasRoomBelow`, which checks the `gameGrid` for collisions (instead of checking based on pixel calculations).
@@ -794,7 +790,25 @@ I'd love to finish Tetris today! Since I worked both days this weekend, I planne
 
 ### Day 64: 2018-07-24
 
-  - ....
+**Finished:**
+
+  - Finally moved this notes file to my computer so I can work on it locally and get more practice using Vim.
+  - Also moved my Tetris project code to a local Git repo and started (finally!) writing my code in Vim.
+  - Refactored to rename tetrominos' `x` and `y` properties to `row` and `col`.
+
+  - Can now move blocks left and right on key press. (Also fixed it up so key presses draw the next frame, not clicks.)
+  - Added a bit of logic to prevent tetrominoes from being moved off screen.
+  - Bug fix: the game grid now updates accordingly when blocks are moved left or right. (For now, the game grid is updated *twice* in every tick of the game loop. Will need to clean this up later.)
+
+
+**Next:**
+  - Game over when blocks reach the top of the screen
+  - Making the blocks into each Tetris shape
+  - Randomizing which block is next
+  - Rotating the blocks on key press
+  - Deleting when a row is completed
+  - Tracking the score
+
 
 
 <hr/>
