@@ -800,14 +800,57 @@ I'd love to finish Tetris today! Since I worked both days this weekend, I planne
   - Added a bit of logic to prevent tetrominoes from being moved off screen.
   - Bug fix: the game grid now updates accordingly when blocks are moved left or right. (For now, the game grid is updated *twice* in every tick of the game loop. Will need to clean this up later.)
 
+  - Added game over condition which displays a message on the screen
+  - Random pastel colors for each tetromino
+
+<hr/>
+
+### Day 65: 2018-07-25
+
+**Finished:**
+
+  - Completed rows now get deleted and remaining rows are shifted down. (The simple logic here won't hold up with more complex tetromino shapes, though. But it's a start!)
+ 
+  - Created nested arrays of 0s and 1s to represent each tetromino shape, then wrote a function that converts those into a flat array of Square objects with coordinates (starting at 0,0 for the top left square).
+
+<hr/>
+
+### Day 66: 2018-07-26
+
+**Finished:**
+
+  - (Re)learned the very basics of using import/export modules (ES6 syntax) and after quite a few annoying bugs and successfully avoiding a rabbit hole (my global npm packages don't seem to be working), I got this working example: [my ES6 module import/export example code on Gist](https://gist.github.com/LearningNerd/08a5039a7c5cddf7342ecd0a32da94e3).
+  
+  - Separated code into modules: main file (renamed to `tetris.js`), tetromino constructor, and a module for helper functions.
+  
+  - Switched to using p5js in ["instance mode"](https://github.com/processing/p5.js/wiki/p5.js-overview#instantiation--namespace), which was the only way I could figure out how to use p5js with my own code organized as modules. (My best guess: the difference between global scope and module scope is what's messing this up!)
+  
+  - To solve scope issues (the Tetromino module can no longer access "global" vars in `tetris.js`), for now I'm just passing the variables for `gameGrid`, `blockSize`, and the p5js instance object all as arguments for the Tetromino constructor. There must be a better way, but this works for now. 
+
+
+**Resources and notes on ES6 modules:**
+  
+  - I like [the info in this article](https://medium.com/dev-channel/es6-modules-in-chrome-canary-m60-ba588dfb8ab7) on using ES6 modules as a "high water mark" for browsers that use modern JS!  
+  - I'm still confused about how "default" exports/imports work, but I'll save that for another day.
+
 
 **Next:**
-  - Game over when blocks reach the top of the screen
-  - Making the blocks into each Tetris shape
+  - Updating the Tetromino objects to use the code I wrote yesterday.
+  - Adding the Square object as its own module, and rewriting Tetromino to contain multiple Square objects.
+  - Drawing a real tetromino (composed of multiple squares) to the screen
+  - Moving a real tetromino down the screen
+  - Updating collision detection to work for real tetrominoes
+  - Updating the left/right movement and collision detection
   - Randomizing which block is next
   - Rotating the blocks on key press
-  - Deleting when a row is completed
   - Tracking the score
+
+
+**Misc stuff to look at later:**
+  - Learn more about module scope vs block scope and best practices for how to structure module relationships!
+  - [The p5js website has a beginner-friendly intro to test-driven development](https://p5js.org/learn/tdd.html), which I've been wanting to finally start learning.
+
+
 
 
 
