@@ -834,24 +834,59 @@ I'd love to finish Tetris today! Since I worked both days this weekend, I planne
   - I'm still confused about how "default" exports/imports work, but I'll save that for another day.
 
 
-**Next:**
-  - Updating the Tetromino objects to use the code I wrote yesterday.
-  - Adding the Square object as its own module, and rewriting Tetromino to contain multiple Square objects.
-  - Drawing a real tetromino (composed of multiple squares) to the screen
-  - Moving a real tetromino down the screen
-  - Updating collision detection to work for real tetrominoes
-  - Updating the left/right movement and collision detection
-  - Randomizing which block is next
-  - Rotating the blocks on key press
-  - Tracking the score
-
-
 **Misc stuff to look at later:**
   - Learn more about module scope vs block scope and best practices for how to structure module relationships!
   - [The p5js website has a beginner-friendly intro to test-driven development](https://p5js.org/learn/tdd.html), which I've been wanting to finally start learning.
 
 
+<hr/>
 
+### Day 67: 2018-07-27
+
+**Finished:**
+  - Wrote down a bunch of notes as comments in my code, brainstorming how to refactor into separate components
+  - Successfully updated my code with a Square module and changes to the Tetromino model, integrating the code I wrote yesterday to generate an array of Square objects from an array of 1s and 0s representing each tetromino shape.
+  - Did a quick test with a new p5js draw function to draw a single tetromino -- it works! (I commented out the old drawing code for now, since I need to reorganize everything and rewrite practically every method.)
+  - Created a new branch for the previous version named `single-square-tetris`, so I can easily jump back to my first "finished" version.
+
+
+<hr/>
+
+### Day 68: 2018-07-28
+
+No coding today. After teaching all afternoon, and being pretty sleep-deprived again, I just didn't feel like it. I'm thinking that as far as habits go, taking a day off once a week is totally fine by me. Or the weekends. Or just treating it like going to the gym: 3 or 4 days a week works great.
+
+<hr/>
+
+### Day 69: 2018-07-29
+
+**Finished:**
+  - Refactored Tetris file to break it up into two modules: one with a Tetris constructor, and a separate file for the drawing interface. So I moved all the p5js code there.
+  - Now the Tetris constructor has parameters for number of rows and columns, which are defined as constants in the drawing interface file
+  - The drawing loop calls `gameLoopTick()` which, for now, does nothing except return an array of squares to be drawn.
+  - Gutted the Tetromino module, removing all the movement and collision-detection code and removing all references to p5js or the game grid.
+
+<hr/>
+
+### Day 70: 2018-07-30
+
+**Finished:**
+  - Now each new tetromino has a random shape
+  
+  - Wrote up some notes to try to visualize the code that I'll be writing for this new version, but I was probably just over-thinking it. I wanted to start writing the code to move a tetromino down the screen, but then I ran out of time. And I ran into a bunch of annoying bugs, and realized my local server just wasn't loading the updated files. I could've sworn that Command + the refresh button on the touch bar worked last time, but it didn't this time! (Only using the refresh button in the browser window works for a hard refresh.)
+
+<hr/>
+
+### Day 71: 2018-07-31
+
+**Finished:**
+  - Successfully moving a tetromino down the screen on each frame, yay!
+  - Added `hasRoomForNextMove` method to Tetris module with downard collision detection. And it works! Phew!
+
+**Next:**
+  - Updating the left/right movement and collision detection
+  - Rotating the blocks on key press
+  - Tracking the score
 
 
 <hr/>
