@@ -883,11 +883,98 @@ No coding today. After teaching all afternoon, and being pretty sleep-deprived a
   - Successfully moving a tetromino down the screen on each frame, yay!
   - Added `hasRoomForNextMove` method to Tetris module with downard collision detection. And it works! Phew!
 
-**Next:**
-  - Updating the left/right movement and collision detection
-  - Rotating the blocks on key press
-  - Tracking the score
+  - Refactoring: now storing `fallenSquares` as an array, separate from the current tatromino object (containing its own squares), instead of keeping track of a merges `squares` object. Overly complicated! Instead, now the Tetris module passes a merged array of all squares to the interface module.
+  - Refactoring: now the Tetromino's `move` method returns the entire tetromino object, not just its squares array. Makes more sense.
 
+  - Wrote a new `updateGameGrid` method for the Tetris module, which switches grid spaces on and off based on old and new coordinates of the current tetromino.
+  - Refactored `print` method to use a copy of the `gameGrid` (otherwise the console would always show the newest version of the array, or I'd have to pass in a copy of it every time I call the print method, which is annoying... so I'm starting to see the usefulness of not mutating arrays, for sure!)
+
+<hr/>
+
+### Day 72: 2018-08-01
+
+**Finished:**
+  - Added left/right collision checking to `hasRoomForNextMove`, which was broken at first. (I forgot that I can't check for *both* sideways and downward collisions at the same time (I don't think); if there isn't room to the side, the tetromino also doesn't move down. That's no good!)
+
+  - Interface now sets the `nextMove` variable and passes it to the Tetris module's `gameLoopTick` method, which passes it along to `hasRoomForNextMove` and the Tetromino module's `move` method.
+
+  - Fixed left/right movement! Current tetromino now moves left or right *only*, without also moving down. And now it moves down on its own every X frames. (Later might change this to every X milliseconds based on timestamp. Not sure which is better.)
+
+
+<hr/>
+
+### Day 73: 2018-08-02
+
+**Finished:**
+  - Yesterday I got it to create a new tetromino when the previous one lands, but now I also got the canvas to draw all the previous squares in addition to the new squares. And I fixed a little bug I had created, where they weren't moving all the way down the screen even though they had room. (Forgot to switch out one argument, oops! Tiny fix!)
+
+  - The game ends now, yay! I added an `isOffScreen` method to the Tetris module. At first I had a couple little bugs, but I fixed them up! Now each new tetromino appears fully on the screen, and the game ends when any of its squares are in the top row. (Probably still needs some tweaking, though.)
+
+- New bug discovered: my collision detection is off in a few important cases! For the "S" shape, only its bottom-most square checks for collisions, so it actually *sinks* into the squares below in certain situations, because one of its squares ignores collisions! My logic was oversimplified. Oops.
+
+<hr/>
+
+### Day 74: 2018-08-03
+
+**Finished:**
+  - Completely rewrote the collision detection logic in `hasRoomForNextMove`, which feels super complicated but at least it works now! I'm checking every square against every other square in the tetromino, then removing every square that has a neighbor (below, to the left, or to the right), and finally checking the adjacent `gameGrid` locations for each of the remaining `edgeSquares`.
+
+  - Along the way to rewriting that method, I created all sorts of new little bugs and made some silly mistakes related to array indexes and trying to modify an array in place -- bad, bad, very bad!
+
+  - I discovered a new bug (or re-discovered it?): the game-over condition has false positives, if moving the tetromino left or right while it's still at the top of the screen. Gotta rewrite that one from scratch too, probably!
+
+**#TIL:**
+  - I found a very cool little algorithm for filtering an array in place [from this StackOverflow thread](https://stackoverflow.com/questions/37318808/what-is-the-in-place-alternative-to-array-prototype-filter), where you keep track of two indexes to overwrite the elements to remove with elements to keep from further down the array, and then reset the array's length manually at the end to chop off the last half. I didn't even know you could do that! [This thread on "index adjustment" and why it's clunky to change an array in place](https://stackoverflow.com/questions/18305431/how-to-remove-all-odd-numbers-in-an-array-using-javascript/18305442) was interesting.
+
+<hr/>
+
+### Day 75: 2018-08-04
+
+No coding. (Aside from spending all of 2 minutes starting to write notes in here, and then I stopped to play games the rest of the night because I felt pretty burnt out after my class.)
+
+<hr/>
+
+### Day 76: 2018-08-05
+
+No coding. I just didn't feel like it. Taking a nap and finally eating, and then rock climbing, and then going out for food... and then I was too tired to even *think* about working on anything at night. I guess I have it in my head already that it's OK to take a break on weekends, especially since I taught a class both days this weekend (again), and it's pretty exhausting.
+
+<hr/>
+
+### Day 77: 2018-08-06
+
+**Finished:**
+  - Rewrote game-over condition: as soon as a new tetromino is created, check if it overlaps any squares on the game grid. Works like a charm!
+
+  - Reimplemented clearing rows and shifting down squares, hurray!
+
+  - Bug or feature? Sometimes a square will be left floating in mid-air, if there was a bigger gap below it. I forgot if the original game did this, and it looks like it does! But I still have this nagging feeling that my implementation is missing something... Oh well, good enough for now.
+
+  - A little refactoring: now reusing `updateGameGrid` after clearing rows and updating the array of squares, instead of creating another method to accomplish the same thing. (Now `updateGameGrid` is called after moving the current tetromino *and* after clearing any rows.)
+
+  - Implemented rotation, woohoo!!! It was easier than I thought -- at least the first step. The last row becomes the first column, and the first row becomes the last column, for each clockwise rotation. Just a couple of nested for loops, incrementing one counter and decrementing the other. What a beautifully simple pattern! Very satisfying to figure out. But...
+
+  - Bug to solve: I don't know why the tetromino moves down the screen when it's rotated. It looks like the coordinates of its squares don't match the game grid anymore. Not sure why. I'll also probably have to rewrite the collision detection *yet again*, because it seems downright impossible to use the current implementation to check for collisions caused by rotations. Eep!
+
+
+<hr/>
+
+### Day 78: 2018-08-07
+
+**Finished:**
+
+  - Worked it out on paper: I can indeed rotate the tetrominoes using only their coordinates, no need for rotating the shape and then updating their coordinates in two separate steps. Time to try implementing it in code now! I'm excited by just how simple this might be!
+
+  - Implemented new rotation algorithm and added `centerSquare` property, marking the center in the `shapes` templates with the number 2. New algorithm: calculate each square's offset from center square, switch row/column offset and negate one of them, apply new offset to generate new coordinates. So much simpler, no need to rotate the shape template itself!
+
+  - Rewrote collision detection to be *so much simpler!* Now instead of checking the edges of a tetromino, I just changed the `move` method into a `getNewTetromino` method that returns a new tetromino object with the coordinates that result from the proposed move. Then I check if any of those squares overlap or go outside the game grid; if not, I set the current tetromino to that new version!
+
+  - Fixed a tricky bug: I forgot that `[...myArray]` only makes a *shallow* copy of an array, and I'm using nested arrays! So now, instead of making a copy of the game grid and switching off the tetromino's previous coordinates (which also switched them off in the actual grid, oops!), now it's checking for coordinates that overlap but *excluding* any from the previous coordinates. 
+
+ 
+**Next:**
+  - Figure out how Tetris games handle rotation when it would cause a collision -- what's the algorithm here?
+  - Tracking the score
+  - Show queue of next tetrominoes
 
 <hr/>
 
