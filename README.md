@@ -1076,7 +1076,9 @@ No coding. Nice lazy Sunday.
 ### Day 85: 2018-08-14
 
 **Finished:**
+  - Implemented left/right plus soft-drop combined move, so now if you hold down both keys it'll move quickly down and to the side simultaneously. Feels much more intuitive this way!
 
+  - Fixed a tiny edge case: previously, holding left and then also holding down right arrow key would cause the tetromino to still repeat moving to the left, because that was the order of the conditional statements. I'm sure it would rarely happen, but it definitely shouldn't work that way! One small change to fix it: track which key was the most recent one pressed, and only repeat left or right if it's held down *and* the most recently pressed key.
 
 
 
