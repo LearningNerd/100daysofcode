@@ -970,11 +970,128 @@ No coding. I just didn't feel like it. Taking a nap and finally eating, and then
 
   - Fixed a tricky bug: I forgot that `[...myArray]` only makes a *shallow* copy of an array, and I'm using nested arrays! So now, instead of making a copy of the game grid and switching off the tetromino's previous coordinates (which also switched them off in the actual grid, oops!), now it's checking for coordinates that overlap but *excluding* any from the previous coordinates. 
 
- 
-**Next:**
-  - Figure out how Tetris games handle rotation when it would cause a collision -- what's the algorithm here?
-  - Tracking the score
-  - Show queue of next tetrominoes
+<hr/>
+
+### Day 79: 2018-08-08
+
+Since I solved what I thought were the hard problems of Tetris, I'm basically done now! But I'm also nowhere close to done, because there are lots of little details I haven't implemented. I recognize this feeling from every project I've ever done -- the moment when I need to decide: how much is enough? 
+
+Today I discovered there's *a lot* of nuance to the Tetris rotation system, and it varies from game to game. The [Tetris Guideline](http://tetris.wikia.com/wiki/Tetris_Guideline) is the current specification, developed in 2001 to standardize all official Tetris games.
+
+Now that I know this exists, my inner perfectionist wants to keep going until my version matches the official specs. But my original goal here was just to find out how hard it would be to build Tetris, and how long it would take me, and to learn whatever I could from the challenge. Turns out, as with most projects, it took me way longer than I thought it would!
+
+OK, time to decide.
+
+**Final-ish list of features for my good-enough Tetris:**
+
+  - Fix the rotation bug for the O shape -- it doesn't rotate at all!
+  - Track number of lines cleared (I don't care about the intricacies of the official scoring system)
+  - Use all 7 Tetris shapes
+  - Assign a fixed color to each Tetris shape
+  - Show a queue of upcoming shapes
+
+
+**Some misc notes and rabbit holes for another day:**
+
+  - [This StrategyWiki overview of Tetris rotation systems](https://strategywiki.org/wiki/Tetris/Rotation_systems) is fascinating!  
+
+  - So now I know that *wall kicks* are a thing. I might want to try implementing the most simple variation, so the tetromino can be rotated when against the side walls, if there's room.
+
+  - Apparently it's *tetrominos*, no "e"! That's according to The Tetris Company, supposedly. But Wikipedia and other sites write it as "tetrominoes", so I'll stick with that.
+
+  - Officially, there actually is a non-visible portion of the grid ("playfield")! Good to know!
+
+  - Each piece has a specific spawn rule: horizontal, with J/L and T pointing up, and in particular columns!
+
+
+**Finished:**
+
+  - For the "O" shape, set its `centerSquare` property to `undefined` and updated the `rotate` method to end early and return an uneditied copy of the tetromino in that case, so now the "O" shape literally *does not* rotate.
+
+<hr/>
+
+### Day 80: 2018-08-09
+
+**Finished:**
+
+  - Added score (just the number of lines cleared)
+  
+  - Refactoring: now `gameLoopTick` returns an object containing the squares to draw, whether the game is over, and the score. Now the interface module handles displaying "game over" and displays the score too.
+
+  - Added all 7 shapes, each with an assigned color. Refactored: Tetris module stores the shape templates and handles randomly generating shapes, passing them to the Tetromino constructor (instead of the Tetromino handling that).
+
+  - Added queue of next tetrominoes! Now the canvas draws the next tetrominoes off to the side, and the playfield is now a subset of the canvas. The Tetris module now stores the queue of next tetrominoes, taking the next one and pushing another to the queue each time a new tetromino is dropped. (I'm not doing that "7 bag" algorithm that the official game uses, so the randomness of the shapes could use some tweaking, but whatever. This is good-enough Tetris.)
+
+  - Added animation! Now the game animates itself! Fixed a couple little bugs: now the piece doesn't move down on every single game loop tick (and for now, game loop ticks are the same as animation frames). Another interesting bug was that at first, the pieces kept repeating their move on every frame until pressing a different button. The fix was simple: use the p5js `keyIsDown` method *inside* the draw loop to update (and reset) on every frame.
+
+
+**Questions and threads to follow later:**
+
+  - What are the pros and cons of defining local variables within an object constructor, compared to setting them as properties of the object? (Using `let blah` versus `this.blah`)
+  - Look into use cases for creating custom events
+  
+
+<hr/>
+
+### Day 81: 2018-08-10
+
+**Finished:**
+
+  - Implemented counter-clockwise rotation, following the [Tetris Guideline](http://tetris.wikia.com/wiki/Tetris_Guideline) to map it to the "Z" or "Ctrl" keys.
+
+  - Tetrominoes now spawn horizontally, and in the left/center columns, according to the official guideline.
+
+  - Re-implemented the "soft drop" move: when the user presses the down arrow, the tetromino moves down immediately (potentially on every game loop tick if the key is held)
+
+  - Added "hard drop" move: when user presses Space, immediately move the tetromino as far down as it has room for. My code's a bit messy in my attempt to keep it DRY... something to take another look at later! At first I had a little bug where the tetromino could still be moved after the hard drop, but I fixed it with one tiny change to the logic.
+
+  - To prevent the page from scrolling when pressing the arrow keys, I just used `preventDefault()` with the "keydown" DOM event. For whatever reason, it didn't work with the p5js `keyPressed` method. Right now I'm using the `which` property to get the key codes for the game controls and only disabling those.
+
+
+<hr/>
+
+### Day 82: 2018-08-11
+
+No coding, totally fine with taking the weekend off.
+
+<hr/>
+
+### Day 83: 2018-08-12
+
+No coding. Nice lazy Sunday.
+
+<hr/>
+
+### Day 84: 2018-08-13
+
+**Finished:**
+  - Fixed key-repeat issue. After a bit of a wild goose chase, I finally realized that the official Tetris game has a delay befor repeating a move! The solution ended up being pretty simple: register the initial key press, but then ignore it until reaching the threshhold (some number of milliseconds), and then repeat the move as long as the key is held down.
+
+  - The soft-drop repeats immediately though, no delay. (That's what it seems to do in the official game.)
+    
+  - I spent *a lot* of time experimenting with it to try to get the right feel for the controls. I'm reasonably happy with it now!
+
+<hr/>
+
+### Day 85: 2018-08-14
+
+**Finished:**
+
+
+
+
+**Updates for later:**
+
+  - Add title and info to the web page (to publish it)
+  - Refactoring! The code is still pretty messy.
+  - Bundle the JS files and transpile (learn about Webpack etc for this, probably!)
+  - Add replay button (so users don't need to refresh the page to play again)
+  - Add basic wall kicks (see [bottom of this page on Tetris rotation systems](https://strategywiki.org/wiki/Tetris/Rotation_systems) for reference)
+  - Maybe: flesh out the scoring system
+  - Maybe: sound effects
+  - Maybe: add pause/resume feature
+
+Obviously, the sky's the limit as far as other feature ideas go! Game modes, a multiplayer version, various experimental variations on the game logic, mashups between Tetris and other games... But I need to stop somewhere!
 
 <hr/>
 
